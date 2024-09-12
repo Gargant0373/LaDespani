@@ -1,14 +1,14 @@
-import "./Content.css";
+import "./LandingCard.css";
 
-interface ContentProps {
+interface LandingCard {
     title: string;
     content: string;
     image: string;
 }
 
-function Content(props: ContentProps) {
+function LandingCard(props: LandingCard) {
     return <>
-        <section className="content">
+        <section className="landing-card">
             <div className="left">
                 <div className="title">{props.title}</div>
                 <div className="text">{props.content}</div>
@@ -21,4 +21,4 @@ function Content(props: ContentProps) {
     </>
 }
 
-export default Content;
+export default LandingCard;

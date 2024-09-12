@@ -1,0 +1,53 @@
+.testimonials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    font-family: "Roboto", sans-serif;
+    color: #14274a;
+    text-align: center;
+
+    margin-top: 5rem;
+}
+
+.testimonials .title {
+    font-size: 2.1rem;
+    font-weight: 600;
+}
+
+.testimonials .content {
+    padding: 0.7rem;
+    
+    font-size: 1.3rem;
+}    
+
+.testimonials .name {
+    color: #616161;
+}
+
+.testimonials .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    padding: 0.8rem;
+}
+
+.testimonials .buttons button {
+    background-color: #E0B973;
+    color: #FFF;
+
+    border: 0;
+    padding: 0.5rem;
+    font-weight: 600;
+    border-radius: 6px;
+
+    width: 2rem;
+    height: 2rem;
+
+    cursor: pointer;
+    transition: color 0.5s ease;
+}
+
+.testimonials .buttons button:hover {
+    color: #14274a;
+}

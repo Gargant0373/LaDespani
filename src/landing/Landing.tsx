@@ -1,6 +1,7 @@
 import Header from "../misc/header/Header";
-import Content from "./Content/Content";
+import LandingCard from "./Content/LandingCard";
 import "./Landing.css";
+import Testimonials from "./Testimonials/Testimonials";
 
 function Landing() {
 
@@ -13,8 +14,9 @@ function Landing() {
         <Header />
         <div className="motto">Motorcycle friendly guesthouse, parking possible as well!</div>
         {content.map((item) => {
-            return <Content key={item.title} title={item.title} content={item.content} image={item.image} />
+            return <LandingCard key={item.title} title={item.title} content={item.content} image={item.image} />
         })}
+        <Testimonials />
     </>
 }
 
