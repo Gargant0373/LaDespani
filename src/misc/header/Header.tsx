@@ -19,6 +19,13 @@ function Header() {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const scrollDown = () => {
+        window.scrollTo({
+            top: window.innerHeight,
+            behavior: "smooth"
+        });
+    }
+
     return <>
         <header className="header" style={{
             backgroundImage: "url(images/landing1.jpg)",
@@ -51,7 +58,7 @@ function Header() {
                 <span className="icon">🏠︎</span>
                 <span className="text">BOOK NOW</span>
             </button>
-            <span className="scroll">
+            <span className="scroll" onClick={() => scrollDown()}>
                 <span className="text">Scroll</span>
                 <span className="icon">▼</span>
             </span>

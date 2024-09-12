@@ -14,7 +14,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: #14274a67;
     z-index: 0;
 }
