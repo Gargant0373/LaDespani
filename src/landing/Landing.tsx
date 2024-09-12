@@ -1,9 +1,20 @@
-import Header from "../misc/Header";
+import Header from "../misc/header/Header";
+import Content from "./Content/Content";
+import "./Landing.css";
 
 function Landing() {
 
+    const content = [
+        { title: "Cozy and clean", content: "Our rooms are designed to transport you into an environment made for leisure. Take your mind off the day-to-day of home life and find a private paradise for yourself.", image: "content1.jpg" },
+        { title: "Leave your worries at home!", content: "We love relaxing and created an oasis for you to spend hot summer days at.From the moment you walk in the garden the temperature drops and everything turns green.", image: "content2.jpg" }
+    ]
+
     return <>
         <Header />
+        <div className="motto">Motorcycle friendly guesthouse, parking possible as well!</div>
+        {content.map((item) => {
+            return <Content key={item.title} title={item.title} content={item.content} image={item.image} />
+        })}
     </>
 }
 
