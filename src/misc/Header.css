@@ -1,0 +1,20 @@
+.header {
+    width: 100%;
+    height: 100vh;
+
+    background-size: cover;
+    background-color: #14274a81;
+    z-index: -1;
+}
+
+.header::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #14274a67;
+    z-index: 0;
+}

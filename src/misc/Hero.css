@@ -1,0 +1,39 @@
+.header .hero {
+    color: #FFF;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 80%;
+
+    margin-top: 7rem;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header .hero .item {
+    z-index: 1;
+
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 0.3rem;
+}
+
+.header .hero .item:nth-child(1) {
+    font-size: 2.5rem;
+}
+
+.header .hero .item:nth-child(2) {
+    font-size: 4.5rem;
+    font-weight: 700;
+}
+
+.header .hero .item:nth-child(3) {
+    font-size: 2.7rem;
+    letter-spacing: 0.4rem;
+}
+
+.header .hero .item:nth-child(4) {
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+}

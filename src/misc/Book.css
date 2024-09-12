@@ -1,0 +1,35 @@
+.header .book {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 10rem;
+
+    color: #FFF;
+    
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+    background-color: #E0B973;
+    border-radius: 6px;
+    border: 0;
+
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header .book .text {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.header .book .icon {
+    font-size: 1.3rem;
+    padding-bottom: 0.25rem;
+}
