@@ -51,3 +51,17 @@
 .testimonials .buttons button:hover {
     color: #14274a;
 }
+
+@media screen and (max-width: 991px) {
+    .testimonials {
+        margin-top: 3rem;
+    }
+
+    .testimonials .title {
+        font-size: 1.8rem;
+    }
+
+    .testimonials .content {
+        font-size: 1.1rem;
+    }
+}

@@ -3,9 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
     text-align: center;
-
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -13,14 +11,12 @@
 
 .header .navbar .logo {
     background-color: #E0B973;
-
     padding-top: 2.5rem;
     padding-bottom: 3rem;
     padding-left: 1rem;
     padding-right: 1rem;
     border-bottom-right-radius: 40px;
     border-bottom-left-radius: 40px;
-
     z-index: 1;
 }
 
@@ -42,7 +38,6 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 2rem;
-
     z-index: 1;
 }
 
@@ -50,7 +45,6 @@
     font-size: 1.3rem;
     color: #FFF;
     text-decoration: none;
-
     border-bottom: 0px;
     transition: border 0.5s ease;
 }
@@ -66,4 +60,88 @@
 
 .header .navbar .menu .item:hover:after {
     width: 100%;
+}
+
+.header .navbar .hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    margin-right: 1rem;
+    z-index: 1;
+}
+
+.header .navbar .hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #FFF;
+    transition: 0.4s;
+}
+
+.header .navbar .menu.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.header .navbar .menu.open .item {
+    padding: 1rem 0;
+}
+
+@media screen and (max-width: 991px) {
+
+    .header .navbar {
+        width: 90%;
+    }
+
+    .header .navbar .logo {
+        padding-top: 1rem;
+        padding-bottom: 1.2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+    .header .navbar .logo .title {
+        font-size: 1rem;
+    }
+
+    .header .navbar .logo .subtitle {
+        font-size: 0.5rem;
+    }
+
+    .header .navbar .menu {
+        display: none;
+        gap: 0.5rem;
+    }
+
+    .header .navbar .menu.open {
+        position: absolute;
+
+        top: 0%;
+        left: 25%;
+        
+        width: 50%;
+        background-color: #14274ade;
+        z-index: 2;
+    }
+
+    .header .navbar .menu.open {
+        display: flex;
+    }
+
+    .header .navbar .menu .item {
+        font-size: 1rem;
+    }
+
+    .header .navbar .hamburger {
+        display: flex;
+    }
 }

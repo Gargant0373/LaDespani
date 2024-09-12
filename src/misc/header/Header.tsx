@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./Book.css";
 import "./Header.css";
 import "./Hero.css";
@@ -12,6 +13,12 @@ function Header() {
         { title: "Contact", link: "/contact" }
     ]
 
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return <>
         <header className="header" style={{
             backgroundImage: "url(images/landing1.jpg)",
@@ -21,10 +28,17 @@ function Header() {
                     <div className="title">LADESPANI</div>
                     <div className="subtitle">GUESTHOUSE</div>
                 </div>
-                <div className="menu">
-                    {menuItems.map((item) => {
-                        return <a className="item" key={item.title} href={item.link}>{item.title}</a>
-                    })}
+                <div className={`menu ${isMenuOpen ? "open" : ""}`}>
+                    {menuItems.map((item) => (
+                        <a className="item" key={item.title} href={item.link}>
+                            {item.title}
+                        </a>
+                    ))}
+                </div>
+                <div className="hamburger" onClick={toggleMenu}>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
                 </div>
             </nav>
             <div className="hero">

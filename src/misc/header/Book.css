@@ -33,3 +33,14 @@
     font-size: 1.3rem;
     padding-bottom: 0.25rem;
 }
+
+@media screen and (max-width: 991px) {
+    .header .book {
+        width: 8rem;
+        margin-top: 70px;
+    }
+
+    .header .book .text {
+        font-size: 0.8rem;
+    }
+}

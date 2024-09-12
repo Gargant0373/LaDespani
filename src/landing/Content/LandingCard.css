@@ -57,3 +57,41 @@
     width: 30rem;
     height: auto;
 }
+
+@media screen and (max-width: 991px) {
+    .landing-card {
+        width: 90%;
+
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .landing-card .left {
+        width: 100%;
+        padding: 0;
+        
+        border-left: 0;
+    }
+
+    .landing-card .left .title {
+        font-size: 1rem;
+    }
+
+    .landing-card .left .text {
+        font-size: 0.8rem;
+    }
+
+    .landing-card .left button {
+        font-size: 0.6rem;
+        
+        margin-left: 0;
+        margin-top: 1rem;
+
+        padding-left: 1.3rem;
+        padding-right: 1.3rem;
+    }
+
+    .landing-card .right img {
+        width: 100%;
+    }
+}

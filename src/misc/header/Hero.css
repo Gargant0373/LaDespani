@@ -37,3 +37,25 @@
     font-size: 0.9rem;
     letter-spacing: 0.1rem;
 }
+
+@media screen and (max-width: 991px) {
+    .header .hero {
+        margin-top: 5rem;
+    }
+
+    .header .hero .item:nth-child(1) {
+        font-size: 1.3rem;
+    }
+
+    .header .hero .item:nth-child(2) {
+        font-size: 3rem;
+    }
+
+    .header .hero .item:nth-child(3) {
+        font-size: 2rem;
+    }
+
+    .header .hero .item:nth-child(4) {
+        font-size: 0.7rem;
+    }
+}
