@@ -1,0 +1,73 @@
+.footer {
+    background-color: #13264b;
+    position: relative;
+    padding: 20px;
+
+    color: white;
+
+    margin-top: 5rem;
+}
+
+.footer .triangle {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-30%);
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 50px solid #13264b;
+}
+
+.footer .content {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-top: 20px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 6rem;
+}
+
+.footer .content .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    gap: 0.3rem;
+}
+
+.footer .content .column .pad {
+    padding-top: 1rem;
+}
+
+.footer .content .column .title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    
+    text-align: center;
+}
+
+.footer .content .column .subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 0.3rem;
+    text-align: center;
+}
+
+.footer .content .column .text {
+    font-size: 0.7rem;
+}
+
+.footer .content .column .text2 {
+    font-size: 1rem;
+
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    cursor: pointer;
+}

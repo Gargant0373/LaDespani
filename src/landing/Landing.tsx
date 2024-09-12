@@ -1,4 +1,5 @@
-import Header from "../misc/header/Header";
+import Footer from "../misc/Footer/Footer";
+import Header from "../misc/Header/Header";
 import LandingCard from "./Content/LandingCard";
 import "./Landing.css";
 import Testimonials from "./Testimonials/Testimonials";
@@ -17,6 +18,7 @@ function Landing() {
             return <LandingCard key={item.title} title={item.title} content={item.content} image={item.image} />
         })}
         <Testimonials />
+        <Footer />
     </>
 }
 
