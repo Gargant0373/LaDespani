@@ -5,12 +5,17 @@ import "./Hero.css";
 import "./Navbar.css";
 import "./Scroll.css";
 
-function Header() {
+interface HeaderProps {
+    image: string;
+    selected: number;
+}
+
+function Header(props: HeaderProps) {
     const menuItems = [
         { title: "Home", link: "/" },
-        { title: "Facilities", link: "/facilities" },
-        { title: "Rooms", link: "/rooms" },
-        { title: "Contact", link: "/contact" }
+        { title: "Facilities", link: "#facility" },
+        { title: "Rooms", link: "#rooms" },
+        { title: "Contact", link: "#contact" }
     ]
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,7 +33,7 @@ function Header() {
 
     return <>
         <header className="header" style={{
-            backgroundImage: "url(images/landing1.jpg)",
+            backgroundImage: "url(images/" + props.image + ")",
         }}>
             <nav className="navbar">
                 <div className="logo">
@@ -36,9 +41,9 @@ function Header() {
                     <div className="subtitle">GUESTHOUSE</div>
                 </div>
                 <div className={`menu ${isMenuOpen ? "open" : ""}`}>
-                    {menuItems.map((item) => (
+                    {menuItems.map((item, index) => (
                         <a className="item" key={item.title} href={item.link}>
-                            {item.title}
+                            {props.selected === index ? <b>{item.title}</b> : item.title}
                         </a>
                     ))}
                 </div>

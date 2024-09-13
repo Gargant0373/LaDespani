@@ -1,0 +1,28 @@
+.facility {
+    position: relative;
+    height: min-content;
+    display: flex;
+    justify-content: center;
+
+    margin-top: 4rem;
+}
+
+.facility img {
+    width: 700px;
+    height: auto;
+}
+
+.facility .title {
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+
+    background-color: #FFF;
+    width: 20%;
+    padding: 1rem;
+    
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+}

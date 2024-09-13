@@ -12,7 +12,7 @@ function Landing() {
     ]
 
     return <>
-        <Header />
+        <Header image="landing1.jpg" selected={0} />
         <div className="motto">Motorcycle friendly guesthouse, parking possible as well!</div>
         {content.map((item) => {
             return <LandingCard key={item.title} title={item.title} content={item.content} image={item.image} />
