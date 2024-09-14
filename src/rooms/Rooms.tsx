@@ -37,6 +37,10 @@ function Rooms() {
     return <>
         <section className="rooms">
             <Header image={"rooms.jpg"} selected={2} />
+            <div className="text">
+                <div className="title">ROOMS</div>
+                <div className="subtitle">Each of our bright, ligh-flooded rooms come with everything you could possibly need for a comfortable stay. And yes, comfort isn't our only objective, we also value good design, sleek contemporary furnishing complemented by the rich tones of nature's palette as visible from our rooms' garden-view windows and terraces.</div>
+            </div>
             {rooms.map((room) => {
                 return <Room {...room} />
             })}

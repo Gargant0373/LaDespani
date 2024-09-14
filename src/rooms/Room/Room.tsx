@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Room.css";
+import MediaSlider from "./MediaSlider";
 
 export interface RoomProps {
     title: string;
@@ -25,14 +26,13 @@ function Room(props: RoomProps) {
 
     return <>
         <div className="room">
-            <img className="present" src={getPath(0)} alt={props.title} />
+            <MediaSlider images={props.images} />
             <div className="strip">{props.title}</div>
             <div className="expand">
                 <button onClick={toggle}>+</button>
-                <span>VIEW ROOM DETAILS</span>
+                {!open && <span>VIEW ROOM DETAILS</span>}
                 {open && <div className="details">
                     <div className="description">
-                        <h1>{props.title}</h1>
                         <p>{props.description}</p>
                     </div>
                 </div>
