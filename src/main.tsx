@@ -5,6 +5,7 @@ import Landing from './landing/Landing'
 import Facilities from './facilities/Facilities'
 import "./index.css"
 import Contact from './contact/Contact'
+import Rooms from './rooms/Rooms'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -12,6 +13,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/facility" element={<Facilities />} />
+        <Route path="/rooms" element={<Rooms />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </HashRouter>
