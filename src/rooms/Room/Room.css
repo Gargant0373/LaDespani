@@ -1,0 +1,72 @@
+.room {
+    margin-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 50%;
+
+    border: 1px solid #14274a;
+    border-radius: 1%;
+}
+
+.room .present {
+    width: 100%;
+}
+
+.room .strip {
+    width: 100%;
+    height: 3rem;
+
+    background-color: #14274a;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #FFF;
+    text-align: center;
+    font-size: 1.3rem;
+    text-transform: uppercase;;
+    font-weight: 600;
+}
+
+.room .expand {
+    height: 4.5rem;
+    width: 80%;
+
+    display: flex;
+    align-items: center;
+}
+
+.room .expand button {
+    background-color: #E0B973;
+
+    border-radius: 50%;
+    border: 0;
+    height: 2rem;
+    width: 2rem;
+
+    font-size: 1.5rem;
+    color: #FFF;
+    text-align: center;
+
+    transition: 0.1s ease-in-out;
+}
+
+.room .expand button:hover {
+    height: 2.5rem;
+    width: 2.5rem;
+
+    cursor: pointer;
+}
+
+.room .expand span {
+    padding-left: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
