@@ -1,0 +1,79 @@
+.contact-heading {
+    height: min-content;
+    display: flex;
+    justify-content: center;
+
+    background-color: #14274A;
+}
+
+.contact-heading .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 80%;
+}
+
+.contact-heading .container .logo {
+    background-color: #E0B973;
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    z-index: 1;
+
+    text-align: center;
+    align-self: flex-start;
+}
+
+.contact-heading .container .logo .title {
+    font-size: 1.9rem;
+    font-weight: 600;
+    letter-spacing: 0.3rem;
+    color: #14274A;
+}
+
+.contact-heading .container .logo .subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.25rem;
+}
+
+.contact-heading .container .heading {
+    font-weight: 500;
+    color: #FFF;
+    font-size: 2.7rem;
+    padding-bottom: 5%;
+}
+
+@media screen and (max-width: 991px) {
+    .contact-heading .container {
+        width: 90%;
+    }
+    
+    .contact-heading .container .logo {
+        padding-top: 1rem;
+        padding-bottom: 1.2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+    .contact-heading .container .logo .title {
+        font-size: 1rem;
+    }
+
+    .contact-heading .container .logo .subtitle {
+        font-size: 0.5rem;
+    }
+
+    .contact-heading .container .heading {
+        padding-top: 7%;
+        padding-bottom: 7%;
+
+        font-size: 2rem;
+    }
+}

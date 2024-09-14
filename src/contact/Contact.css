@@ -1,0 +1,41 @@
+.contact .container {
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 80%;
+
+    color: #14274A;
+}
+
+.contact .main {
+    padding-top: 5rem;
+}
+
+.contact .main .title {
+    text-transform: uppercase;
+
+    font-size: 1.6rem;
+    font-weight: 700;
+}   
+
+.contact .info {
+    padding-top: 3rem;
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact .info a {
+    color: #14274A;
+    text-decoration: none;
+}
+
+.contact .info .map {
+    font-weight: 700;
+}
+
+@media screen and (max-width: 991px) {
+    .contact .container {
+        width: 90%;
+    }
+}
