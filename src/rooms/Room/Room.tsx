@@ -15,11 +15,7 @@ export interface RoomProps {
 
 function Room(props: RoomProps) {
     const [open, setOpen] = useState(false);
-
-    const getPath = (ix: number) => {
-        return "images/" + props.images[ix];
-    }
-
+    
     const toggle = () => {
         setOpen(!open);
     }
