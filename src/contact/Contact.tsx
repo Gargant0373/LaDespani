@@ -1,4 +1,5 @@
 import Footer from "../misc/Footer/Footer";
+import BookingForm from "./BookingForm/BookingForm";
 import "./Contact.css";
 import ContactHeading from "./ContactHeading/ContactHeading";
 
@@ -12,6 +13,7 @@ function Contact() {
                     <div className="text">At LaDespani Guesthouse, we take our customers seriously. Do you have any enquiries, compaints
                         or requests, please call us and we will get back to you as soon as possible.</div>
                 </div>
+                <BookingForm />
                 <div className="info">
                     <div className="line">Mihai Viteazul 128, 500183</div>
                     <div className="line">Brasov, Romania</div>
