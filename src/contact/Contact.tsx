@@ -17,7 +17,7 @@ function Contact() {
                 <div className="info">
                     <div className="line">Mihai Viteazul 128, 500183</div>
                     <div className="line">Brasov, Romania</div>
-                    <div className="map">View map →</div>
+                    <div className="map"><a href="https://maps.app.goo.gl/xDLBLkZsb61cQ6eh8" target="_blank">View map →</a></div>
                     <br />
                     <div className="line">Phone: <a href="tel:+40772269013">+40772269013</a></div>
                     <div className="line">Email: <a href="mailto:anudani241@hotmail.com">anudani241@hotmail.com</a></div>
