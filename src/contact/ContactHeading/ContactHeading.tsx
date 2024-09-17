@@ -8,8 +8,11 @@ function ContactHeading() {
                     <div className="title">LADESPANI</div>
                     <div className="subtitle">GUESTHOUSE</div>
                 </div>
-                <div className="heading">CONTACT-US</div>
+                <div className="menu"> 
+                    <a className="item" href="/">Home</a>
+                </div>
             </div>
+            <div className="heading">CONTACT-US</div>
         </nav>
     </>
 }
