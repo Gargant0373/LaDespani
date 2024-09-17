@@ -1,4 +1,7 @@
 .room {
+    max-width: 600px;
+    width: 95%;
+
     margin-top: 3rem;
     margin-left: auto;
     margin-right: auto;
@@ -7,8 +10,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    width: 50%;
 
     border: 1px solid #14274a;
     border-radius: 1%;
@@ -32,15 +33,22 @@
     text-align: center;
     font-size: 1.3rem;
     text-transform: uppercase;;
-    font-weight: 600;
+    font-weight: 100%;
 }
 
 .room .expand {
     height: 4.5rem;
-    width: 80%;
+    width: 95%;
+    margin-left: 35px;
 
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+    padding-left: 1rem;
+    font-size: 0.8rem;
+    max-width: 600px;
+    margin-right: 15px;
 }
 
 .room .expand button {
@@ -51,9 +59,17 @@
     height: 2rem;
     width: 2rem;
 
+    min-width: 2rem; /* Ensure minimum size */
+    min-height: 2rem;
+    max-width: 2rem; /* Prevent from shrinking */
+    max-height: 2rem;
+
     font-size: 1.5rem;
     color: #FFF;
     text-align: center;
+
+    align-items: center;
+    justify-content: center;
 
     transition: 0.1s ease-in-out;
 }
@@ -69,4 +85,23 @@
     padding-left: 1rem;
     font-size: 0.8rem;
     font-weight: 600;
+    max-width: 600px;
+
+    display: inline-flex;
+    align-items: center;
+}
+
+.room .expand .details {
+    margin-top: 15px;
+}
+
+
+.room .expanded {
+    height: 22rem;
+}
+
+@media (max-width: 480px) {
+    .room .expanded {
+        height: 22rem;
+    }
 }
