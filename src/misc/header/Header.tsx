@@ -41,11 +41,22 @@ function Header(props: HeaderProps) {
                     <div className="subtitle">GUESTHOUSE</div>
                 </div>
                 <div className={`menu ${isMenuOpen ? "open" : ""}`}>
-                    {menuItems.map((item, index) => (
-                        <a className="item" key={item.title} href={item.link}>
-                            {props.selected === index ? <b>{item.title}</b> : item.title}
-                        </a>
-                    ))}
+                    {menuItems.map((item, index) => {
+                        if (item.title === "Home") {
+                            return (
+                                <a className="item" key={item.title} href={window.location.hostname === 'localhost' ? '/' : '/LaDespani/'}>
+                                    {props.selected === index ? <b>{item.title}</b> : item.title}
+                                </a>
+                            )
+                        }
+                        else {
+                            return (
+                                <a className="item" key={item.title} href={item.link}>
+                                    {props.selected === index ? <b>{item.title}</b> : item.title}
+                                </a>
+                            )
+                        }
+                    })}
                 </div>
                 <div className="hamburger" onClick={toggleMenu}>
                     <span className="bar"></span>
