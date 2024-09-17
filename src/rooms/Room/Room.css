@@ -97,11 +97,15 @@
 
 
 .room .expanded {
-    height: 22rem;
+    height: 24rem;
+}
+
+.room .expanded .description {
+    padding-right: 15px;
 }
 
 @media (max-width: 480px) {
     .room .expanded {
-        height: 22rem;
+        height: 25rem;
     }
 }
