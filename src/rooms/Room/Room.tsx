@@ -43,9 +43,10 @@ function Room(props: RoomProps) {
             <MediaSlider images={props.images} />
             <div className="strip">{props.title}</div>
             <div className={`expand ${open ? "expanded" : ""}`}>
-                <button onClick={toggle}>{open ? "-" : "+"}</button>
                 <div className="details">
-                <span>VIEW ROOM DETAILS</span>
+                    <button onClick={toggle}>{open ? "-" : "+"}</button>
+                    <span>VIEW ROOM DETAILS</span>
+                </div>
                 {open && 
                     <div className="description">
                         <p>{props.description}</p>
@@ -73,7 +74,6 @@ function Room(props: RoomProps) {
                         <p>Price: {props.price} RON</p>
                     </div>
                 }
-                </div>
             </div>
         </div>
     </>
