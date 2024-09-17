@@ -59,9 +59,9 @@
     height: 2rem;
     width: 2rem;
 
-    min-width: 2rem; /* Ensure minimum size */
+    min-width: 2rem;
     min-height: 2rem;
-    max-width: 2rem; /* Prevent from shrinking */
+    max-width: 2rem;
     max-height: 2rem;
 
     font-size: 1.5rem;
@@ -71,7 +71,7 @@
     align-items: center;
     justify-content: center;
 
-    transition: 0.1s ease-in-out;
+    transition: 0.2s ease-in-out;
 }
 
 .room .expand button:hover {
@@ -79,6 +79,7 @@
     width: 2.5rem;
 
     cursor: pointer;
+    color: #14274a;
 }
 
 .room .expand span {
@@ -95,10 +96,17 @@
     margin-top: 15px;
 }
 
-.room .expanded {
-    height: auto;
+.room .expand .description {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
 }
 
-.room .expanded .description {
-    padding-right: 15px;
+.room .expand .description .facility {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    margin-top: 7px;
 }

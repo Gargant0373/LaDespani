@@ -45,12 +45,12 @@ function Room(props: RoomProps) {
             <div className={`expand ${open ? "expanded" : ""}`}>
                 <div className="details">
                     <button onClick={toggle}>{open ? "-" : "+"}</button>
-                    <span>VIEW ROOM DETAILS</span>
+                    <span>{open ? "HIDE" : "VIEW"} ROOM DETAILS</span>
                 </div>
                 {open && 
                     <div className="description">
                         <p>{props.description}</p>
-                        <p>Facilities:</p>
+                        <p><b>Facilities:</b></p>
                         <ul>
                                 {Object.entries(props.facilities).map(
                                     ([facility, available]) =>
@@ -58,12 +58,12 @@ function Room(props: RoomProps) {
                                             if (available) {
                                                 const IconComponent = facilityIcons[facility];
                                                 return (
-                                                    <li key={facility} className="facility-item">
-                                                        <IconComponent className="facility-icon" />
-                                                        <span>
+                                                    <li key={facility} className="facility">
+                                                        <IconComponent className="icon" />
+                                                        <span className="text">
                                                             {facility
-                                                                .replace(/([A-Z])/g, " $1") // Add space before capital letters (e.g., privateBathroom -> Private Bathroom)
-                                                                .replace(/^./, (str) => str.toUpperCase())} {/* Capitalize first letter */}
+                                                                .replace(/([A-Z])/g, " $1")
+                                                                .replace(/^./, (str) => str.toUpperCase())}
                                                         </span>
                                                     </li>
                                                 );
@@ -71,7 +71,7 @@ function Room(props: RoomProps) {
                                         }
                                 )}
                             </ul>
-                        <p>Price: {props.price} RON</p>
+                        <p>Price: <b>{props.price} RON</b></p>
                     </div>
                 }
             </div>
