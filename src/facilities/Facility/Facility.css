@@ -20,9 +20,25 @@
     background-color: #FFF;
     width: 20%;
     padding: 1rem;
-    
+
     font-size: 1.5rem;
     text-transform: uppercase;
     text-align: center;
     font-weight: 600;
+}
+
+@media screen and (max-width: 991px) {
+    .facility img {
+        width: 80%;
+    }
+
+    .facility .title {
+        width: 40%;
+        left: 30%;
+
+        padding: 0.4rem;
+
+        font-size: 0.9rem;
+
+    }
 }
