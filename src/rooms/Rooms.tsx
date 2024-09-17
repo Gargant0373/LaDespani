@@ -8,7 +8,7 @@ const rooms: RoomProps[] = [
         title: "Budget Room",
         images: ["room1_0.jpg", "room1_1.jpg", "room1_2.jpg"],
         description: "A budget room, pefect for a short stay. The room has a double bed and a private bathroom with a nice view of the garden.",
-        price: 220,
+        price: 200,
         facilities : {
             privateBathroom: true,
             bathtub: false,
@@ -20,10 +20,10 @@ const rooms: RoomProps[] = [
         }
     },
     {
-        title: "Standard Room",
+        title: "Standard Room 1",
         images: ["room2_0.jpg", "room2_1.jpg", "room2_2.jpg"],
         description: "A standard room, perfect for a couple. The room has a double bed, a private bathroom with a bathtub.",
-        price: 300,
+        price: 250,
         facilities : {
             privateBathroom: true,
             bathtub: true,
@@ -35,10 +35,40 @@ const rooms: RoomProps[] = [
         }
     },
     {
-        title: "Balcony Room",
+        title: "Standard Room 2",
+        images: ["room5_0.jpg", "room5_1.jpg", "room5_2.jpg"],
+        description: "A standard room, perfect for a couple. The room has a double bed, a private bathroom with a bathtub.",
+        price: 250,
+        facilities : {
+            privateBathroom: true,
+            bathtub: true,
+            shower: true,
+            balcony: false,
+            safeDeposit: true, 
+            TV: true,
+            towels: true
+        }
+    },
+    {
+        title: "Balcony Room 1",
         images: ["room3_0.jpg", "room3_1.jpg", "room3_2.jpg", "room3_3.jpg"],
         description: "A room with a balcony, perfect for a couple. The room has a double bed, a private bathroom with a shower.",
-        price: 350,
+        price: 250,
+        facilities : {
+            privateBathroom: true,
+            bathtub: true,
+            shower: true,
+            balcony: true,
+            safeDeposit: true, 
+            TV: true,
+            towels: true
+        }
+    },
+    {
+        title: "Balcony Room 2",
+        images: ["room4_0.jpg", "room4_1.jpg", "room4_2.jpg", "room4_3.jpg"],
+        description: "A room with a balcony, perfect for a couple. The room has a double bed, a private bathroom with a shower.",
+        price: 250,
         facilities : {
             privateBathroom: true,
             bathtub: true,
