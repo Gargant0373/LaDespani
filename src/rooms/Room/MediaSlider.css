@@ -3,9 +3,11 @@
 .slideshow {
     margin: 0 auto;
     overflow: hidden;
-    max-width: 600px;
+    /* max-width: 600px; */
     padding: 0;
     position: relative;
+
+    width: 100%;
 }
 
 .slideshowSlider {
@@ -59,4 +61,25 @@
     width: 100%; 
     height: 100%;
     margin: 0;
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+    .slideshowSlider {
+        height: 300px; /* Reduce the height for tablets and small screens */
+    }
+
+    .slide {
+        height: 300px; /* Adjust the height of each slide */
+    }
+}
+
+@media (max-width: 480px) {
+    .slideshowSlider {
+        height: 200px; /* Further reduce height for small phones */
+    }
+
+    .slide {
+        height: 200px; /* Adjust the height of each slide */
+    }
 }

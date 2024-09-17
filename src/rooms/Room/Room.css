@@ -1,5 +1,6 @@
 .room {
-    width: 600px;
+    max-width: 600px;
+    width: 95%;
 
     margin-top: 3rem;
     margin-left: auto;
@@ -9,8 +10,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    /* width: 50%; */
 
     border: 1px solid #14274a;
     border-radius: 1%;
@@ -34,12 +33,12 @@
     text-align: center;
     font-size: 1.3rem;
     text-transform: uppercase;;
-    font-weight: 600;
+    font-weight: 100%;
 }
 
 .room .expand {
     height: 4.5rem;
-    width: 100%;
+    width: 95%;
     margin-left: 35px;
 
     display: flex;
