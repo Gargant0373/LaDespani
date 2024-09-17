@@ -63,23 +63,22 @@
     margin: 0;
 }
 
-/* Media Queries for smaller screens */
 @media (max-width: 768px) {
     .slideshowSlider {
-        height: 300px; /* Reduce the height for tablets and small screens */
+        height: 300px;
     }
 
     .slide {
-        height: 300px; /* Adjust the height of each slide */
+        height: 300px; 
     }
 }
 
 @media (max-width: 480px) {
     .slideshowSlider {
-        height: 200px; /* Further reduce height for small phones */
+        height: 200px; 
     }
 
     .slide {
-        height: 200px; /* Adjust the height of each slide */
+        height: 200px;
     }
 }

@@ -9,27 +9,45 @@ const rooms: RoomProps[] = [
         images: ["room1_0.jpg", "room1_1.jpg", "room1_2.jpg"],
         description: "A budget room, pefect for a short stay. The room has a double bed and a private bathroom with a nice view of the garden.",
         price: 220,
-        bathtub: false,
-        shower: true,
-        balcony: false
+        facilities : {
+            privateBathroom: true,
+            bathtub: false,
+            shower: true,
+            balcony: false,
+            safeDeposit: true, 
+            TV: true,
+            towels: true
+        }
     },
     {
         title: "Standard Room",
         images: ["room2_0.jpg", "room2_1.jpg", "room2_2.jpg"],
         description: "A standard room, perfect for a couple. The room has a double bed, a private bathroom with a bathtub.",
         price: 300,
-        bathtub: true,
-        shower: true,
-        balcony: false
+        facilities : {
+            privateBathroom: true,
+            bathtub: true,
+            shower: true,
+            balcony: false,
+            safeDeposit: true, 
+            TV: true,
+            towels: true
+        }
     },
     {
         title: "Balcony Room",
         images: ["room3_0.jpg", "room3_1.jpg", "room3_2.jpg", "room3_3.jpg"],
         description: "A room with a balcony, perfect for a couple. The room has a double bed, a private bathroom with a shower.",
         price: 350,
-        bathtub: true,
-        shower: true,
-        balcony: true
+        facilities : {
+            privateBathroom: true,
+            bathtub: true,
+            shower: true,
+            balcony: true,
+            safeDeposit: true, 
+            TV: true,
+            towels: true
+        }
     }
 ]
 

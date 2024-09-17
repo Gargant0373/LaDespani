@@ -85,3 +85,17 @@
     /* font-weight: 600; */
     max-width: 600px;
 }
+
+.room .details {
+    margin-right: 15px;
+}
+
+.room .expanded {
+    height: 14rem;
+}
+
+@media (max-width: 480px) {
+    .room .expanded {
+        height: 20rem;
+    }
+}
