@@ -4,7 +4,6 @@ import "./Header.css";
 import "./Hero.css";
 import "./Navbar.css";
 import "./Scroll.css";
-import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
     image: string;
@@ -20,7 +19,6 @@ function Header(props: HeaderProps) {
     ]
     
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
