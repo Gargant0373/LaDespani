@@ -5,7 +5,12 @@ import "./Facilities.css";
 import Facility from "./Facility/Facility";
 
 const facilities = [
-    { title: "Indoor Parking", image: "parking.jpg" }
+    { title: "Indoor Parking", image: "parking.jpg" },
+    { title: "Ping pong", image: "pingpong.jpg" },
+    { title: "Grill", image: "grill.jpg" },
+    { title: "Trampoline", image: "trampoline.jpg" },
+    { title: "Kitchen", image: "kitchen.jpg" },
+    { title: "Laundry", image: "laundry.jpg" },
 ]
 
 function Facilities() {
