@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import './BookingForm.css';
+import '../TermsModal/TermsModal.tsx';
+import TermsModal from '../TermsModal/TermsModal.tsx';
 
 type FormValues = {
     name: string;
@@ -11,10 +13,12 @@ type FormValues = {
     phone: string;
     email: string;
     description: string;
+    terms: boolean;
 };
 
 const BookingForm: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
+    const [isTermsModalOpen, setTermsModalOpen] = useState(false);
 
     const onSubmit: SubmitHandler<FormValues> = async (data) => {
         try {
@@ -32,7 +36,11 @@ const BookingForm: React.FC = () => {
         }
     };
 
+    const openTermsModal = () => setTermsModalOpen(true);
+    const closeTermsModal = () => setTermsModalOpen(false);
+
     return (
+        <>
         <form className="booking-form" onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <label className="booking-form__label">Name</label>
@@ -73,8 +81,19 @@ const BookingForm: React.FC = () => {
                 <label className="booking-form__label">Description</label>
                 <textarea className="booking-form__textarea" {...register('description')} placeholder="Additional information" />
             </div>
+            <div>
+                <input type="checkbox" className="booking-form__checkbox" {...register('terms', { required: true })} />
+                <label className="booking-form__terms">
+                    I agree to the <a className='terms' onClick={openTermsModal}>terms and conditions</a>
+                </label>
+                {errors.terms && <p className="booking-form__error">You must agree to the terms and conditions</p>}
+            </div>
+
             <button type="submit" className="booking-form__button">Submit</button>
         </form>
+
+        <TermsModal isOpen={isTermsModalOpen} onClose={closeTermsModal} />
+        </>
     );
 };
 
