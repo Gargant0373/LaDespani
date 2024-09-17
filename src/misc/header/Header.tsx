@@ -4,6 +4,7 @@ import "./Header.css";
 import "./Hero.css";
 import "./Navbar.css";
 import "./Scroll.css";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
     image: string;
@@ -17,8 +18,9 @@ function Header(props: HeaderProps) {
         { title: "Rooms", link: "#rooms" },
         { title: "Contact", link: "#contact" }
     ]
-
+    
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -59,7 +61,7 @@ function Header(props: HeaderProps) {
                 <span className="item">GUESTHOUSE</span>
                 <span className="item">Accomodating people in Brasov since 2007</span>
             </div>
-            <button className="book">
+            <button className="book" onClick={() => window.location.href = "#contact"}>
                 <span className="icon">🏠︎</span>
                 <span className="text">BOOK NOW</span>
             </button>

@@ -8,7 +8,7 @@ function Landing() {
 
     const content = [
         { title: "Cozy and clean", content: "Our rooms are designed to transport you into an environment made for leisure. Take your mind off the day-to-day of home life and find a private paradise for yourself.", image: "content1.jpg" , link: "/#rooms"},
-        { title: "Leave your worries at home!", content: "We love relaxing and created an oasis for you to spend hot summer days at.From the moment you walk in the garden the temperature drops and everything turns green.", image: "content2.jpg", link: "/#facilities" },
+        { title: "Leave your worries at home!", content: "We love relaxing and created an oasis for you to spend hot summer days at.From the moment you walk in the garden the temperature drops and everything turns green.", image: "content2.jpg", link: "/#facility" },
     ]
 
     return <>

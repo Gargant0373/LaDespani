@@ -13,13 +13,13 @@ function Footer() {
                     <div className="text">Brasov, Romania</div>
                 </div>
                 <div className="column">
-                    <a className="text2">About Us</a>
-                    <a className="text2">Contact</a>
+                    <a className="text2" href="https://maps.app.goo.gl/xDLBLkZsb61cQ6eh8" target="_blank">Find Us</a>
+                    <a className="text2" onClick={() => window.location.href = "#contact"}>Contact</a>
                     <a className="text2">Terms and Conditions</a>
                 </div>
                 <div className="column">
-                    <a className="text2"><FaFacebookF /> Facebook</a>
-                    <a className="text2"><FaInstagram /> Instagram</a>
+                    <a className="text2" href="https://www.facebook.com/ladespani.guesthouse/" target="_blank"><FaFacebookF /> Facebook</a>
+                    <a className="text2" href="https://www.instagram.com/ladespaniguesthouse/" target="_blank"><FaInstagram /> Instagram</a>
                 </div>
             </div>
         </footer>

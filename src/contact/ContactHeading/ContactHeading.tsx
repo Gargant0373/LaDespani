@@ -9,7 +9,7 @@ function ContactHeading() {
                     <div className="subtitle">GUESTHOUSE</div>
                 </div>
                 <div className="menu"> 
-                    <a className="item" href="/">Home</a>
+                    <a className="item" href="/">Go back</a>
                 </div>
             </div>
             <div className="heading">CONTACT-US</div>
