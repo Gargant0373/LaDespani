@@ -17,7 +17,7 @@ function Header(props: HeaderProps) {
         { title: "Rooms", link: "#rooms" },
         { title: "Contact", link: "#contact" }
     ]
-    
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
