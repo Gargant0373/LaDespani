@@ -36,9 +36,6 @@ const BookingForm: React.FC = () => {
         }
     };
 
-    {
-        /* Tu ai facut facultate ca sa ai doua metode pentru un toggle? */
-    }
     const openTermsModal = () => setTermsModalOpen(true);   
     const closeTermsModal = () => setTermsModalOpen(false);
 

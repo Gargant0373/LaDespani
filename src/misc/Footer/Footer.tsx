@@ -1,8 +1,16 @@
+import { useState } from "react";
 import "./Footer.css";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import TermsModal from "../../contact/TermsModal/TermsModal";
 
 function Footer() {
+    const [isTermsModalOpen, setTermsModalOpen] = useState(false);
+    
+    const openTermsModal = () => setTermsModalOpen(true);
+    const closeTermsModal = () => setTermsModalOpen(false);
+
     return <>
+        <TermsModal isOpen={isTermsModalOpen} onClose={closeTermsModal} />
         <footer className="footer">
             <div className="triangle"></div>
             <div className="content">
@@ -15,7 +23,7 @@ function Footer() {
                 <div className="column">
                     <a className="text2" href="https://maps.app.goo.gl/xDLBLkZsb61cQ6eh8" target="_blank">Find Us</a>
                     <a className="text2" onClick={() => window.location.href = "#contact"}>Contact</a>
-                    <a className="text2">Terms and Conditions</a>
+                    <a className="text2" onClick={() => openTermsModal()}>Terms and Conditions</a>
                 </div>
                 <div className="column">
                     <a className="text2" href="https://www.facebook.com/ladespani.guesthouse/" target="_blank"><FaFacebookF /> Facebook</a>
