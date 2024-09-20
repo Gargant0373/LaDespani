@@ -6,6 +6,7 @@ import Facilities from './facilities/Facilities'
 import "./index.css"
 import Contact from './contact/Contact'
 import Rooms from './rooms/Rooms'
+import About from './about/About'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/facility" element={<Facilities />} />
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </HashRouter>
   </StrictMode>,

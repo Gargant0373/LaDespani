@@ -15,7 +15,8 @@ function Header(props: HeaderProps) {
         { title: "Home", link: "/" },
         { title: "Facilities", link: "#facility" },
         { title: "Rooms", link: "#rooms" },
-        { title: "Contact", link: "#contact" }
+        { title: "Contact", link: "#contact" },
+        { title: "About", link: "#about" }
     ]
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
