@@ -7,6 +7,7 @@ import "./index.css"
 import Contact from './contact/Contact'
 import Rooms from './rooms/Rooms'
 import About from './about/About'
+import DigitalCard from './card/DigitalCard'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
+        <Route path="/card" element={<DigitalCard />} />
       </Routes>
     </HashRouter>
   </StrictMode>,
