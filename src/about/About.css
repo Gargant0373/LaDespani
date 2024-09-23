@@ -28,6 +28,11 @@
 
 .about img {
     margin-top: 2rem;
-    width: auto;
-    height: 30rem;
+    width: 80%;
+}
+
+@media screen and (max-width: 991px) {
+    .about img {
+        width: 100%;
+    }
 }
