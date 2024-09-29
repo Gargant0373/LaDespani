@@ -1,5 +1,5 @@
 import Footer from "../misc/Footer/Footer";
-import Header from "../misc/header/Header";
+import Header from "../misc/Header/Header";
 import "./About.css";
 
 function About() {

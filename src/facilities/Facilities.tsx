@@ -1,6 +1,6 @@
 import Testimonials from "../landing/Testimonials/Testimonials";
 import Footer from "../misc/Footer/Footer";
-import Header from "../misc/header/Header";
+import Header from "../misc/Header/Header";
 import "./Facilities.css";
 import Facility from "./Facility/Facility";
 
