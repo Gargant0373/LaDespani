@@ -45,7 +45,7 @@ function Header(props: HeaderProps) {
                     {menuItems.map((item, index) => {
                         if (item.title === "Home") {
                             return (
-                                <a className="item" key={item.title} href={window.location.hostname === 'localhost' ? '/' : '/LaDespani/'}>
+                                <a className="item" key={item.title} href="/">
                                     {props.selected === index ? <b>{item.title}</b> : item.title}
                                 </a>
                             )
