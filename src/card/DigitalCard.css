@@ -1,13 +1,18 @@
 .digital-card {
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .digital-card .navbar {
+    width: 100%;
+
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -63,12 +68,14 @@
 
 .digital-card .main-matter {
     width: 80%;
+    height: 50vh;
+
     margin-left: auto;
     margin-right: auto;
 
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
 }
@@ -117,20 +124,37 @@
         width: 90%;
     }
 
+    .digital-card .navbar a {
+        font-size: 1rem;
+    }
+
     .digital-card .navbar .logo {
-        padding-top: 1rem;
-        padding-bottom: 1.2rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.7rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
         border-bottom-right-radius: 20px;
         border-bottom-left-radius: 20px;
     }
 
-    .digital-cards .navbar .logo .title {
-        font-size: 0.6rem;
+    .digital-card .navbar .logo .title {
+        font-size: 1rem;
     }
 
     .digital-card .navbar .logo .subtitle {
         font-size: 0.5rem;
+    }
+
+    .digital-card .main-matter {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .digital-card .main-matter .title {
+        font-size: 1.3rem;
+    }
+    
+    .digital-card .main-matter .text .info {
+        font-size: 1rem;
     }
 }

@@ -11,6 +11,7 @@ const facilities = [
     { title: "Trampoline", image: "trampoline.jpg" },
     { title: "Kitchen", image: "kitchen.jpg" },
     { title: "Laundry", image: "laundry.jpg" },
+    { title: "Safe Locker", image: "safe.jpg" },
 ]
 
 function Facilities() {
@@ -22,7 +23,7 @@ function Facilities() {
                 <div className="subtitle">We want your stay at our cozy guesthouse to be truly special. With thoughtful attention to every detail, we ensure you feel right at home. Enjoy beautiful views, a warm atmosphere, and friendly service that makes your visit unforgettable.</div>
             </div>
             {facilities.map((facility) => {
-                return <Facility title={facility.title} image={facility.image} />
+                return <Facility key={facility.title} title={facility.title} image={facility.image} />
             })}
             <Testimonials />
             <Footer />
