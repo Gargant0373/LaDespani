@@ -1,0 +1,55 @@
+/* Gallery Item Styling */
+.masonry-grid {
+  display: flex;
+  margin-left: -10px; /* gutter size offset */
+  width: auto;
+  padding: 10px;
+}
+
+.masonry-grid_column {
+  padding-left: 10px; /* gutter size */
+  background-clip: padding-box;
+}
+
+.gallery-item {
+  margin-bottom: 10px;
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.gallery-item img:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+/* Popup Styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it overlays other elements */
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}
+
+/* Only show the modal popup on screens larger than 768px */
+@media (max-width: 768px) {
+  .modal {
+    display: none;
+  }
+}
