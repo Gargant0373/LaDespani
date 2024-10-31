@@ -19,7 +19,7 @@ function Gallery() {
 
     return (
         <>
-            <Header image="gallery.jpg" selected={1} />
+            <Header image="gallery.jpg" selected={3} />
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className="masonry-grid"
