@@ -15,6 +15,7 @@ function Header(props: HeaderProps) {
         { title: "Home", link: "/" },
         { title: "Facilities", link: "#facility" },
         { title: "Rooms", link: "#rooms" },
+        { title: "Gallery", link: "#gallery" },
         { title: "Contact", link: "#contact" },
         { title: "About", link: "#about" }
     ]

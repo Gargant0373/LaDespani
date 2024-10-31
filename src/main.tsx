@@ -8,6 +8,7 @@ import Contact from './contact/Contact'
 import Rooms from './rooms/Rooms'
 import About from './about/About'
 import DigitalCard from './card/DigitalCard'
+import Gallery from './gallery/Gallery'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/card" element={<DigitalCard />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Routes>
     </HashRouter>
   </StrictMode>,
