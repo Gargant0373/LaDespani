@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { HashRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Landing from './landing/Landing'
 import Facilities from './facilities/Facilities'
 import "./index.css"
@@ -12,7 +12,7 @@ import Gallery from './gallery/Gallery'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/facility" element={<Facilities />} />
@@ -22,6 +22,6 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/card" element={<DigitalCard />} />
         <Route path="/gallery" element={<Gallery />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   </StrictMode>,
 )

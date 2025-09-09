@@ -2,9 +2,20 @@ import Footer from "../misc/Footer/Footer";
 import BookingForm from "./BookingForm/BookingForm";
 import "./Contact.css";
 import ContactHeading from "./ContactHeading/ContactHeading";
+import { Seo } from "../misc/Seo";
 
 function Contact() {
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact LaDespani Guesthouse",
+        "description": "Get in touch with LaDespani Guesthouse in Brasov for bookings and enquiries.",
+        "publisher": {"@type": "Organization", "name": "LaDespani Guesthouse"},
+        "url": "https://ladespani.ro/contact"
+    };
+
     return <>
+        <Seo title="Contact | LaDespani Guesthouse" description="Contact LaDespani Guesthouse in Brasov for room bookings, availability, and enquiries." canonical="https://ladespani.ro/contact" schema={schema} />
         <section className="contact">
             <ContactHeading />
             <div className="container">
@@ -25,7 +36,7 @@ function Contact() {
             </div>
             <Footer />
         </section>
-    </>
+    </>;
 }
 
 export default Contact;

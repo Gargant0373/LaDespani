@@ -13,12 +13,12 @@ interface HeaderProps {
 function Header(props: HeaderProps) {
     const menuItems = [
         { title: "Home", link: "/" },
-        { title: "Facilities", link: "#facility" },
-        { title: "Rooms", link: "#rooms" },
-        { title: "Gallery", link: "#gallery" },
-        { title: "Contact", link: "#contact" },
-        { title: "About", link: "#about" }
-    ]
+        { title: "Facilities", link: "/facility" },
+        { title: "Rooms", link: "/rooms" },
+        { title: "Gallery", link: "/gallery" },
+        { title: "Contact", link: "/contact" },
+        { title: "About", link: "/about" }
+    ];
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -31,48 +31,37 @@ function Header(props: HeaderProps) {
             top: window.innerHeight,
             behavior: "smooth"
         });
-    }
+    };
 
     return <>
         <header className="header" style={{
             backgroundImage: "url(images/" + props.image + ")",
         }}>
-            <nav className="navbar">
+            <nav className="navbar" aria-label="Main navigation">
                 <div className="logo">
                     <div className="title">LADESPANI</div>
                     <div className="subtitle">GUESTHOUSE</div>
                 </div>
-                <div className={`menu ${isMenuOpen ? "open" : ""}`}>
-                    {menuItems.map((item, index) => {
-                        if (item.title === "Home") {
-                            return (
-                                <a className="item" key={item.title} href="/">
-                                    {props.selected === index ? <b>{item.title}</b> : item.title}
-                                </a>
-                            )
-                        }
-                        else {
-                            return (
-                                <a className="item" key={item.title} href={item.link}>
-                                    {props.selected === index ? <b>{item.title}</b> : item.title}
-                                </a>
-                            )
-                        }
-                    })}
+                <div className={`menu ${isMenuOpen ? "open" : ""}`}> 
+                    {menuItems.map((item, index) => (
+                        <a className="item" key={item.title} href={item.link} aria-current={props.selected === index ? 'page' : undefined}>
+                            {props.selected === index ? <b>{item.title}</b> : item.title}
+                        </a>
+                    ))}
                 </div>
-                <div className="hamburger" onClick={toggleMenu}>
+                <button className="hamburger" onClick={toggleMenu} aria-expanded={isMenuOpen} aria-label="Toggle navigation menu">
                     <span className="bar"></span>
                     <span className="bar"></span>
                     <span className="bar"></span>
-                </div>
+                </button>
             </nav>
-            <div className="hero">
+            <div className="hero" role="banner">
                 <span className="item">WELCOME TO</span>
                 <span className="item">LaDespani</span>
                 <span className="item">GUESTHOUSE</span>
                 <span className="item">Accomodating people in Brasov since 2007</span>
             </div>
-            <button className="book" onClick={() => window.location.href = "#contact"}>
+            <button className="book" onClick={() => window.location.href = "/contact"}>
                 <span className="icon">🏠︎</span>
                 <span className="text">BOOK NOW</span>
             </button>
@@ -81,7 +70,7 @@ function Header(props: HeaderProps) {
                 <span className="icon">▼</span>
             </span>
         </header>
-    </>
+    </>;
 }
 
 export default Header;

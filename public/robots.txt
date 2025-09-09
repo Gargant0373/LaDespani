@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Disallow internal hash fragment only patterns (not real paths)
+Disallow: /#
+
+Sitemap: https://ladespani.ro/sitemap.xml

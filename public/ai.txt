@@ -1,0 +1,6 @@
+User-agent: *
+Crawl-Delay: 1
+Allow: /
+Sitemap: https://ladespani.ro/sitemap.xml
+Contact: mailto:anudani241@hotmail.com
+Policy: https://ladespani.ro/terms

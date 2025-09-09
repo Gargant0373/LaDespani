@@ -1,10 +1,23 @@
 import Footer from "../misc/Footer/Footer";
 import Header from "../misc/Header/Header";
 import "./About.css";
+import { Seo } from "../misc/Seo";
 
 function About() {
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About LaDespani Guesthouse",
+        "description": "Learn about the LaDespani mixed Estonian Romanian family and the story behind the guesthouse.",
+        "publisher": {
+            "@type": "Organization",
+            "name": "LaDespani Guesthouse"
+        }
+    };
+
     return <>
-        <Header image={"about.jpg"} selected={4} />
+        <Seo title="About LaDespani Guesthouse" description="Meet the family behind LaDespani Guesthouse in Brasov and discover our story since 2007." canonical="https://ladespani.ro/about" schema={schema} />
+        <Header image={"about.jpg"} selected={5} />
         <section className="about">
             <div className="title">
                 ABOUT US
@@ -23,7 +36,7 @@ function About() {
             <img src="./images/about2.jpg" alt="family picture" />
         </section>
         <Footer />
-    </>
+    </>;
 }
 
 export default About;

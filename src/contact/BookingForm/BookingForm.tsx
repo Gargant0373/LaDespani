@@ -23,6 +23,9 @@ const BookingForm: React.FC = () => {
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
     const siteKey = import.meta.env.VITE_CAPTCHA_SITE_KEY || '';
+    if (!siteKey) {
+        console.warn('VITE_CAPTCHA_SITE_KEY is not set. reCAPTCHA will not render.');
+    }
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
         const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -111,10 +114,16 @@ const BookingForm: React.FC = () => {
                 </div>
 
                 <div className="captcha-container">
-                    <ReCAPTCHA
-                        sitekey={siteKey}
-                        onChange={handleCaptchaChange}
-                    />
+                    {siteKey ? (
+                        <ReCAPTCHA
+                            sitekey={siteKey}
+                            onChange={handleCaptchaChange}
+                        />
+                    ) : (
+                        <div className="booking-form__error" role="alert">
+                            CAPTCHA unavailable. Please set it up or continue; manual review may apply.
+                        </div>
+                    )}
                 </div>
 
                 <button type="submit" className="booking-form__button">Submit</button>

@@ -3,6 +3,7 @@ import Footer from "../misc/Footer/Footer";
 import Header from "../misc/Header/Header";
 import "./Gallery.css";
 import Masonry from "react-masonry-css";
+import { Seo } from "../misc/Seo";
 
 function Gallery() {
     const totalImages = 51;
@@ -17,8 +18,21 @@ function Gallery() {
 
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Photo Gallery - LaDespani Guesthouse",
+        "about": "Images of rooms, facilities and surroundings of LaDespani Guesthouse in Brasov.",
+        "hasPart": images.slice(0, 12).map(src => ({
+            "@type": "ImageObject",
+            "contentUrl": `https://ladespani.ro/${src}`,
+            "name": src.split('/').pop()
+        }))
+    };
+
     return (
         <>
+            <Seo title="Gallery | LaDespani Guesthouse" description="Browse the LaDespani Guesthouse photo gallery: rooms, facilities, and relaxing outdoor spaces in Brasov." canonical="https://ladespani.ro/gallery" schema={schema} />
             <Header image="gallery.jpg" selected={3} />
             <Masonry
                 breakpointCols={breakpointColumnsObj}

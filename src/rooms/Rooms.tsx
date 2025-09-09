@@ -2,6 +2,7 @@ import Footer from "../misc/Footer/Footer";
 import Header from "../misc/Header/Header";
 import Room, { RoomProps } from "./Room/Room";
 import "./Rooms.css";
+import { Seo } from "../misc/Seo";
 
 const rooms: RoomProps[] = [
     {
@@ -82,7 +83,19 @@ const rooms: RoomProps[] = [
 ]
 
 function Rooms() {
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Rooms at LaDespani Guesthouse",
+        "hasPart": rooms.map(r => ({
+            "@type": "Accommodation",
+            "name": r.title,
+            "description": r.description
+        }))
+    };
+
     return <>
+        <Seo title="Rooms | LaDespani Guesthouse" description="Browse comfortable guest rooms at LaDespani in Brasov: budget, standard, and balcony options with private bathrooms." canonical="https://ladespani.ro/rooms" schema={schema} />
         <Header image={"rooms.jpg"} selected={2} />
         <section className="rooms">
             <div className="text">
@@ -90,11 +103,11 @@ function Rooms() {
                 <div className="subtitle">Each of our bright, ligh-flooded rooms come with everything you could possibly need for a comfortable stay. And yes, comfort isn't our only objective, we also value good design, sleek contemporary furnishing complemented by the rich tones of nature's palette as visible from our rooms' garden-view windows and terraces.</div>
             </div>
             {rooms.map((room) => {
-                return <Room {...room} />
+                return <Room {...room} />;
             })}
             <Footer />
         </section>
-    </>
+    </>;
 }
 
 export default Rooms;
