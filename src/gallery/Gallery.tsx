@@ -7,7 +7,7 @@ import { Seo } from "../misc/Seo";
 
 function Gallery() {
     const totalImages = 51;
-    const images = Array.from({ length: totalImages }, (_, index) => `images/gallery/${index + 1}.jpg`);
+    const images = Array.from({ length: totalImages }, (_, index) => `images/gallery/${index + 1}.webp`);
     
     const breakpointColumnsObj = {
         default: 3,
@@ -33,7 +33,7 @@ function Gallery() {
     return (
         <>
             <Seo title="Gallery | LaDespani Guesthouse" description="Browse the LaDespani Guesthouse photo gallery: rooms, facilities, and relaxing outdoor spaces in Brasov." canonical="https://ladespani.ro/gallery" schema={schema} />
-            <Header image="gallery.jpg" selected={3} />
+            <Header image="gallery.webp" selected={3} />
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className="masonry-grid"

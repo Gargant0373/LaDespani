@@ -21,7 +21,7 @@ function DigitalCard() {
                 <a href="/">Visit Website</a>
             </nav>
             <div className="main-matter">
-                <img src="./images/qr.png" alt="QR code linking to official website" />
+                <img src="./images/qr.webp" alt="QR code linking to official website" />
                 <div>
                     <div className="title">LaDespani Guesthouse</div>
                     <div className="text">

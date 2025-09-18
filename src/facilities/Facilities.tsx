@@ -6,13 +6,13 @@ import Facility from "./Facility/Facility";
 import { Seo } from "../misc/Seo";
 
 const facilities = [
-    { title: "Indoor Parking", image: "parking.jpg" },
-    { title: "Ping pong", image: "pingpong.jpg" },
-    { title: "Grill", image: "grill.jpg" },
-    { title: "Trampoline", image: "trampoline.jpg" },
-    { title: "Kitchen", image: "kitchen.jpg" },
-    { title: "Laundry", image: "laundry.jpg" },
-    { title: "Safe Locker", image: "safe.jpg" },
+    { title: "Indoor Parking", image: "parking.webp" },
+    { title: "Ping pong", image: "pingpong.webp" },
+    { title: "Grill", image: "grill.webp" },
+    { title: "Trampoline", image: "trampoline.webp" },
+    { title: "Kitchen", image: "kitchen.webp" },
+    { title: "Laundry", image: "laundry.webp" },
+    { title: "Safe Locker", image: "safe.webp" },
 ];
 
 function Facilities() {
@@ -29,7 +29,7 @@ function Facilities() {
 
     return <>
         <Seo title="Facilities | LaDespani Guesthouse" description="Explore facilities at LaDespani: indoor parking, kitchen, laundry, grill, trampoline, ping pong and more for a comfortable stay." canonical="https://ladespani.ro/facility" schema={schema} />
-        <Header image="facilities.jpg" selected={1} />
+    <Header image="facilities.webp" selected={1} />
         <section className="facilities">
             <div className="text">
                 <div className="title">FACILITIES</div>

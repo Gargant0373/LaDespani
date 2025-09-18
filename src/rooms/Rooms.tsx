@@ -7,7 +7,7 @@ import { Seo } from "../misc/Seo";
 const rooms: RoomProps[] = [
     {
         title: "Budget Room",
-        images: ["room1_0.jpg", "room1_1.jpg", "room1_2.jpg"],
+    images: ["room1_0.webp", "room1_1.webp", "room1_2.webp"],
         description: "A budget room, pefect for a short stay. The room has a double bed and a private bathroom with a nice view of the garden.",
         price: 200,
         facilities : {
@@ -22,7 +22,7 @@ const rooms: RoomProps[] = [
     },
     {
         title: "Standard Room 1",
-        images: ["room2_0.jpg", "room2_1.jpg", "room2_2.jpg"],
+    images: ["room2_0.webp", "room2_1.webp", "room2_2.webp"],
         description: "A standard room, perfect for a couple. The room has a double bed, a private bathroom with a bathtub.",
         price: 250,
         facilities : {
@@ -37,7 +37,7 @@ const rooms: RoomProps[] = [
     },
     {
         title: "Standard Room 2",
-        images: ["room5_0.jpg", "room5_1.jpg", "room5_2.jpg"],
+    images: ["room5_0.webp", "room5_1.webp", "room5_2.webp"],
         description: "A standard room, perfect for a couple. The room has a double bed, a private bathroom with a bathtub.",
         price: 250,
         facilities : {
@@ -52,7 +52,7 @@ const rooms: RoomProps[] = [
     },
     {
         title: "Balcony Room 1",
-        images: ["room3_0.jpg", "room3_1.jpg", "room3_2.jpg", "room3_3.jpg"],
+    images: ["room3_0.webp", "room3_1.webp", "room3_2.webp", "room3_3.webp"],
         description: "A room with a balcony, perfect for a couple. The room has a double bed, a private bathroom with a shower.",
         price: 250,
         facilities : {
@@ -67,7 +67,7 @@ const rooms: RoomProps[] = [
     },
     {
         title: "Balcony Room 2",
-        images: ["room4_0.jpg", "room4_1.jpg", "room4_2.jpg", "room4_3.jpg"],
+    images: ["room4_0.webp", "room4_1.webp", "room4_2.webp", "room4_3.webp"],
         description: "A room with a balcony, perfect for a couple. The room has a double bed, a private bathroom with a shower.",
         price: 250,
         facilities : {
@@ -96,7 +96,7 @@ function Rooms() {
 
     return <>
         <Seo title="Rooms | LaDespani Guesthouse" description="Browse comfortable guest rooms at LaDespani in Brasov: budget, standard, and balcony options with private bathrooms." canonical="https://ladespani.ro/rooms" schema={schema} />
-        <Header image={"rooms.jpg"} selected={2} />
+    <Header image={"rooms.webp"} selected={2} />
         <section className="rooms">
             <div className="text">
                 <div className="title">ROOMS</div>

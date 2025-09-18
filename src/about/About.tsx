@@ -17,7 +17,7 @@ function About() {
 
     return <>
         <Seo title="About LaDespani Guesthouse" description="Meet the family behind LaDespani Guesthouse in Brasov and discover our story since 2007." canonical="https://ladespani.ro/about" schema={schema} />
-        <Header image={"about.jpg"} selected={5} />
+    <Header image={"about.webp"} selected={5} />
         <section className="about">
             <div className="title">
                 ABOUT US
@@ -33,7 +33,7 @@ function About() {
                 and with a little help from AI actually every language. Come to us, we
                 welcome You!
             </div>
-            <img src="./images/about2.jpg" alt="family picture" />
+            <img src="./images/about2.webp" alt="family picture" />
         </section>
         <Footer />
     </>;
