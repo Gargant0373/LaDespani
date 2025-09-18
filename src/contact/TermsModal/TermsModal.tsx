@@ -68,9 +68,12 @@ const termsData = [
         ]
     },
     {
-        title: "9. Privacy Policy",
+        title: "9. Privacy and Data Protection",
         clauses: [
-            "9.1 All guest information collected during the booking process is handled in accordance with the applicable data protection laws. Information will not be shared with third parties without consent."
+            "9.1 We collect and process guest information (such as name, contact details, booking information, and payment details) for the purpose of managing reservations, providing services, and complying with legal obligations.",
+            "9.2 The legal bases for processing are contract performance, compliance with legal obligations, and, where applicable, guest consent (for example, for marketing communications).",
+            "9.3 Guest information is stored securely and will not be shared with third parties, except with service providers involved in processing bookings (such as payment processors, booking platforms, or accountants) or where required by law.",
+            "9.4 Guests have the right to access, correct, or request deletion of their personal data, as well as other rights under GDPR. For details, please see our Privacy Policy or contact us at anudani241@hotmail.com."
         ]
     },
     {
