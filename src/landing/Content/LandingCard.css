@@ -23,6 +23,9 @@
     border-left: 3px solid var(--gold);
 
     height: max-content;
+
+    flex: 1 1 320px;
+    min-width: 0;
 }
 
 .landing-card .left .title {
@@ -78,10 +81,15 @@
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     line-height: 0;
+
+    flex: 0 1 30rem;
+    min-width: 0;
+    max-width: 30rem;
 }
 
 .landing-card .right img {
-    width: 30rem;
+    display: block;
+    width: 100%;
     height: auto;
 
     transition: transform 0.7s var(--ease-out);
@@ -89,6 +97,18 @@
 
 .landing-card .right:hover img {
     transform: scale(1.05);
+}
+
+@media screen and (max-width: 1300px) {
+    .landing-card {
+        width: 85%;
+        gap: 2.5rem;
+    }
+
+    .landing-card .right {
+        flex-basis: 22rem;
+        max-width: 22rem;
+    }
 }
 
 @media screen and (max-width: 991px) {
