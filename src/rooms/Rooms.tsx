@@ -3,12 +3,13 @@ import Header from "../misc/Header/Header";
 import Room, { RoomProps } from "./Room/Room";
 import "./Rooms.css";
 import { Seo } from "../misc/Seo";
+import Reveal from "../misc/Reveal";
 
 const rooms: RoomProps[] = [
     {
         title: "Budget Room",
     images: ["room1_0.webp", "room1_1.webp", "room1_2.webp"],
-        description: "A budget room, pefect for a short stay. The room has a double bed and a private bathroom with a nice view of the garden.",
+        description: "A budget room, perfect for a short stay. The room has a double bed and a private bathroom with a nice view of the garden.",
         price: 200,
         facilities : {
             privateBathroom: true,
@@ -95,15 +96,17 @@ function Rooms() {
     };
 
     return <>
-        <Seo title="Rooms | LaDespani Guesthouse" description="Browse comfortable guest rooms at LaDespani in Brasov: budget, standard, and balcony options with private bathrooms." canonical="https://ladespani.ro/rooms" schema={schema} />
+        <Seo title="Rooms | LaDespani Motorcycle-Friendly Guesthouse Brasov" description="Comfortable guest rooms at LaDespani in Brasov: budget, standard, and balcony options with private bathrooms. Bikers welcome — secure indoor motorcycle parking included." canonical="https://ladespani.ro/rooms" schema={schema} />
     <Header image={"rooms.webp"} selected={2} />
         <section className="rooms">
-            <div className="text">
-                <div className="title">ROOMS</div>
-                <div className="subtitle">Each of our bright, ligh-flooded rooms come with everything you could possibly need for a comfortable stay. And yes, comfort isn't our only objective, we also value good design, sleek contemporary furnishing complemented by the rich tones of nature's palette as visible from our rooms' garden-view windows and terraces.</div>
-            </div>
+            <Reveal>
+                <div className="text">
+                    <div className="title">ROOMS</div>
+                    <div className="subtitle">Each of our bright, light-flooded rooms comes with everything you could possibly need for a comfortable stay. And yes, comfort isn't our only objective: we also value good design, with sleek contemporary furnishing complemented by the rich tones of nature's palette, visible from our rooms' garden-view windows and terraces. Arriving on two wheels? Every room booking includes secure indoor parking for your motorcycle.</div>
+                </div>
+            </Reveal>
             {rooms.map((room) => {
-                return <Room {...room} />;
+                return <Reveal key={room.title}><Room {...room} /></Reveal>;
             })}
             <Footer />
         </section>

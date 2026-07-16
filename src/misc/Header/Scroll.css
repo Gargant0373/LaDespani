@@ -15,6 +15,9 @@
 
     margin-left: auto;
     margin-right: auto;
+
+    cursor: pointer;
+    animation: fade-in 0.9s var(--ease-out) 1.1s both;
 }
 
 .header .scroll .text {
@@ -40,6 +43,17 @@
     height: 1.3rem;
 
     text-align: center;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s var(--ease-spring);
+}
+
+.header .scroll:hover .icon {
+    background-color: #E0B973;
+    color: #FFF;
+    transform: translateY(3px);
 }
 
 @keyframes bounce {

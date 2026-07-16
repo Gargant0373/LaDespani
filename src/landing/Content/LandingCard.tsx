@@ -16,7 +16,7 @@ function LandingCard(props: LandingCard) {
                 <button onClick={() => window.location.href = props.link}>EXPLORE</button>
             </div>
             <div className="right">
-                <img src={"images/" + props.image} alt="content" />
+                <img src={"images/" + props.image} alt={props.title + " — LaDespani Guesthouse Brasov"} />
             </div>
         </section>
     </>

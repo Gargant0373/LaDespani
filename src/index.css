@@ -1,3 +1,28 @@
+:root {
+    --navy: #14274A;
+    --navy-dark: #0f1d38;
+    --navy-tint: rgba(20, 39, 74, 0.06);
+    --gold: #E0B973;
+    --gold-dark: #b6975d;
+    --ink-muted: #5a6478;
+    --surface: #FFFFFF;
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+
+    --shadow-sm: 0 2px 8px rgba(20, 39, 74, 0.08);
+    --shadow-md: 0 8px 24px rgba(20, 39, 74, 0.12);
+    --shadow-lg: 0 16px 40px rgba(20, 39, 74, 0.18);
+
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -6,4 +31,82 @@ html, body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background-color: var(--gold);
+    color: var(--navy);
+}
+
+:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* Scroll-reveal utility — elements start hidden and rise into view
+   when the Reveal component marks them visible. */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.8s var(--ease-out),
+        transform 0.8s var(--ease-out);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
 }

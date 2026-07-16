@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import emailjs from 'emailjs-com';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -17,91 +17,156 @@ type FormValues = {
     terms: boolean;
 };
 
+type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
+
 const BookingForm: React.FC = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>();
     const [isTermsModalOpen, setTermsModalOpen] = useState(false);
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+    const [status, setStatus] = useState<SubmitStatus>('idle');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [confirmationEmail, setConfirmationEmail] = useState('');
+    const recaptchaRef = useRef<ReCAPTCHA>(null);
 
     const siteKey = import.meta.env.VITE_CAPTCHA_SITE_KEY || '';
     if (!siteKey) {
         console.warn('VITE_CAPTCHA_SITE_KEY is not set. reCAPTCHA will not render.');
     }
 
-    const onSubmit: SubmitHandler<FormValues> = (data) => {
+    const onSubmit: SubmitHandler<FormValues> = async (data) => {
         const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
         const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
         const userID = import.meta.env.VITE_EMAILJS_USER_ID;
+        const confirmationTemplateID = import.meta.env.VITE_EMAILJS_CONFIRMATION_TEMPLATE_ID;
 
         if (!serviceID || !templateID || !userID) {
             console.error('EmailJS environment variables are not set');
-            alert('Email service is currently unavailable. Please try again later.');
+            setErrorMessage('Email service is currently unavailable. Please try again later.');
+            setStatus('error');
             return;
         }
 
         if (!captchaToken) {
-            alert('Please complete the reCAPTCHA.');
+            setErrorMessage('Please complete the reCAPTCHA before submitting.');
+            setStatus('error');
             return;
         }
 
+        setStatus('sending');
+        setErrorMessage('');
+
         const emailData = { ...data, 'g-recaptcha-response': captchaToken };
 
-        emailjs.send(serviceID, templateID, emailData, userID)
-            .then(() => {
-                alert('Booking request sent successfully!');
-                setCaptchaToken(null);
-            })
-            .catch((error) => {
-                console.error('Error sending email:', error);
-                alert('There was a problem sending your request.');
-            });
+        try {
+            // Booking request to the guesthouse.
+            await emailjs.send(serviceID, templateID, emailData, userID);
+
+            // Confirmation email back to the guest. Their booking already went
+            // through, so a failure here should not surface as an error.
+            let confirmationSent = false;
+            if (confirmationTemplateID) {
+                try {
+                    await emailjs.send(serviceID, confirmationTemplateID, emailData, userID);
+                    confirmationSent = true;
+                } catch (confirmationError) {
+                    console.error('Error sending confirmation email:', confirmationError);
+                }
+            }
+
+            setConfirmationEmail(confirmationSent ? data.email : '');
+            setStatus('success');
+            reset();
+            setCaptchaToken(null);
+            recaptchaRef.current?.reset();
+        } catch (error) {
+            console.error('Error sending email:', error);
+            setErrorMessage('There was a problem sending your request. Please try again, or call us directly.');
+            setStatus('error');
+            setCaptchaToken(null);
+            recaptchaRef.current?.reset();
+        }
     };
 
     const handleCaptchaChange = (token: string | null) => {
         setCaptchaToken(token);
+        if (token && status === 'error') {
+            setStatus('idle');
+            setErrorMessage('');
+        }
     };
 
     const openTermsModal = () => setTermsModalOpen(true);
     const closeTermsModal = () => setTermsModalOpen(false);
 
+    if (status === 'success') {
+        return (
+            <div className="booking-confirmation" role="status">
+                <div className="booking-confirmation__icon" aria-hidden="true">
+                    <svg viewBox="0 0 52 52">
+                        <circle className="booking-confirmation__circle" cx="26" cy="26" r="24" fill="none" />
+                        <path className="booking-confirmation__check" fill="none" d="M14 27l8 8 16-17" />
+                    </svg>
+                </div>
+                <h3 className="booking-confirmation__title">Booking request sent!</h3>
+                <p className="booking-confirmation__text">
+                    Thank you for choosing LaDespani. We have received your request and will
+                    get back to you as soon as possible.
+                </p>
+                {confirmationEmail && (
+                    <p className="booking-confirmation__text">
+                        A confirmation email is on its way to <b>{confirmationEmail}</b>.
+                    </p>
+                )}
+                <button
+                    type="button"
+                    className="booking-confirmation__button"
+                    onClick={() => setStatus('idle')}
+                >
+                    Send another request
+                </button>
+            </div>
+        );
+    }
+
     return (
         <>
             <form className="booking-form" onSubmit={handleSubmit(onSubmit)}>
-                <div>
+                <div className="booking-form__field">
                     <label className="booking-form__label">Name</label>
                     <input type="text" className="booking-form__input" {...register('name', { required: true })} placeholder="Enter your name" />
                     {errors.name && <p className="booking-form__error">Name is required</p>}
                 </div>
-                <div>
+                <div className="booking-form__field">
                     <label className="booking-form__label">Check-in Date</label>
                     <input type="date" className="booking-form__input" {...register('checkinDate', { required: true })} />
                     {errors.checkinDate && <p className="booking-form__error">Check-in date is required</p>}
                 </div>
-                <div>
+                <div className="booking-form__field">
                     <label className="booking-form__label">Check-out Date</label>
                     <input type="date" className="booking-form__input" {...register('checkoutDate', { required: true })} />
                     {errors.checkoutDate && <p className="booking-form__error">Check-out date is required</p>}
                 </div>
-                <div>
+                <div className="booking-form__field">
                     <label className="booking-form__label">Number of Adults</label>
                     <input type="number" className="booking-form__input" {...register('adults', { required: true, min: 1 })} placeholder="Enter number of adults" />
                     {errors.adults && <p className="booking-form__error">At least 1 adult is required</p>}
                 </div>
-                <div>
+                <div className="booking-form__field">
                     <label className="booking-form__label">Number of Kids</label>
                     <input type="number" className="booking-form__input" {...register('kids', { required: true, min: 0 })} placeholder="Enter number of kids" />
                     {errors.kids && <p className="booking-form__error">Number of kids is required</p>}
                 </div>
-                <div>
+                <div className="booking-form__field">
                     <label className="booking-form__label">Phone Number</label>
                     <input type="tel" className="booking-form__input" {...register('phone', { required: true, pattern: /^\+?\d{10,15}$/ })} placeholder="Enter your phone number" />
                     {errors.phone && <p className="booking-form__error">Valid phone number is required</p>}
                 </div>
-                <div>
+                <div className="booking-form__field">
                     <label className="booking-form__label">Email</label>
                     <input type="email" className="booking-form__input" {...register('email', { required: true })} placeholder="Enter your email" />
                     {errors.email && <p className="booking-form__error">Email is required</p>}
                 </div>
-                <div>
+                <div className="booking-form__field">
                     <label className="booking-form__label">Description</label>
                     <textarea className="booking-form__textarea" {...register('description')} placeholder="Additional information" />
                 </div>
@@ -116,6 +181,7 @@ const BookingForm: React.FC = () => {
                 <div className="captcha-container">
                     {siteKey ? (
                         <ReCAPTCHA
+                            ref={recaptchaRef}
                             sitekey={siteKey}
                             onChange={handleCaptchaChange}
                         />
@@ -126,7 +192,22 @@ const BookingForm: React.FC = () => {
                     )}
                 </div>
 
-                <button type="submit" className="booking-form__button">Submit</button>
+                {status === 'error' && errorMessage && (
+                    <div className="booking-form__alert" role="alert">
+                        {errorMessage}
+                    </div>
+                )}
+
+                <button type="submit" className="booking-form__button" disabled={status === 'sending'}>
+                    {status === 'sending' ? (
+                        <>
+                            <span className="booking-form__spinner" aria-hidden="true"></span>
+                            Sending...
+                        </>
+                    ) : (
+                        'Submit'
+                    )}
+                </button>
             </form>
 
             <TermsModal isOpen={isTermsModalOpen} onClose={closeTermsModal} />

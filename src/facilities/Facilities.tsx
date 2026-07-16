@@ -4,9 +4,10 @@ import Header from "../misc/Header/Header";
 import "./Facilities.css";
 import Facility from "./Facility/Facility";
 import { Seo } from "../misc/Seo";
+import Reveal from "../misc/Reveal";
 
 const facilities = [
-    { title: "Indoor Parking", image: "parking.webp" },
+    { title: "Secure Indoor Parking", image: "parking.webp" },
     { title: "Ping pong", image: "pingpong.webp" },
     { title: "Grill", image: "grill.webp" },
     { title: "Trampoline", image: "trampoline.webp" },
@@ -28,15 +29,17 @@ function Facilities() {
     };
 
     return <>
-        <Seo title="Facilities | LaDespani Guesthouse" description="Explore facilities at LaDespani: indoor parking, kitchen, laundry, grill, trampoline, ping pong and more for a comfortable stay." canonical="https://ladespani.ro/facility" schema={schema} />
+        <Seo title="Facilities & Secure Motorcycle Parking | LaDespani Guesthouse Brasov" description="Facilities at LaDespani in Brasov: secure indoor parking for motorcycles and cars, guest kitchen, laundry, grill, trampoline, ping pong and safe lockers." canonical="https://ladespani.ro/facility" schema={schema} />
     <Header image="facilities.webp" selected={1} />
         <section className="facilities">
-            <div className="text">
-                <div className="title">FACILITIES</div>
-                <div className="subtitle">We want your stay at our cozy guesthouse to be truly special. With thoughtful attention to every detail, we ensure you feel right at home. Enjoy beautiful views, a warm atmosphere, and friendly service that makes your visit unforgettable.</div>
-            </div>
+            <Reveal>
+                <div className="text">
+                    <div className="title">FACILITIES</div>
+                    <div className="subtitle">We want your stay at our cozy guesthouse to be truly special. With thoughtful attention to every detail, we ensure you feel right at home. Riders get a proper welcome too: your motorcycle spends the night under a roof in our secure indoor parking, and the laundry is there when your gear needs a wash after a long day on the Carpathian passes. Enjoy beautiful views, a warm atmosphere, and friendly service that makes your visit unforgettable.</div>
+                </div>
+            </Reveal>
             {facilities.map((facility) => {
-                return <Facility key={facility.title} title={facility.title} image={facility.image} />;
+                return <Reveal key={facility.title}><Facility title={facility.title} image={facility.image} /></Reveal>;
             })}
             <Testimonials />
             <Footer />

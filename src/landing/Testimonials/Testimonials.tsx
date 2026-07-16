@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Testimonials.css";
+import Reveal from "../../misc/Reveal";
 
 const testimonials = [
     { name: "Mike", content: "Awesome people! Awesome place." },
@@ -19,15 +20,25 @@ function Testimonials() {
     }
 
     return <>
-        <section className="testimonials">
-            <div className="title">Testimonials</div>
-            <div className="content">{testimonials[current].content}</div>
-            <div className="name">{testimonials[current].name} on Google</div>
-            <div className="buttons">
-                <button onClick={previous}>◀</button>
-                <button onClick={next}>▶</button>
-            </div>
-        </section>
+        <Reveal>
+            <section className="testimonials">
+                <div className="title">Testimonials</div>
+                <div className="quote-mark" aria-hidden="true">“</div>
+                <div className="slide" key={current}>
+                    <div className="content">{testimonials[current].content}</div>
+                    <div className="name">{testimonials[current].name} on Google</div>
+                </div>
+                <div className="buttons">
+                    <button onClick={previous} aria-label="Previous testimonial">◀</button>
+                    <div className="dots" aria-hidden="true">
+                        {testimonials.map((_, idx) => (
+                            <span key={idx} className={`dot${idx === current ? " active" : ""}`} onClick={() => setCurrent(idx)}></span>
+                        ))}
+                    </div>
+                    <button onClick={next} aria-label="Next testimonial">▶</button>
+                </div>
+            </section>
+        </Reveal>
     </>
 }
 

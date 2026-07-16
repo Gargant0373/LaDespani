@@ -8,13 +8,32 @@
     flex-direction: column;
 }
 
+.about .reveal {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .about .title {
     padding-top: 2rem;
 
     font-size: 2rem;
     font-weight: 600;
+    letter-spacing: 0.15rem;
     text-align: center;
     color: #14274A;
+}
+
+.about .title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: var(--gold);
+    margin: 1rem auto 0;
 }
 
 .about .subtitle {
@@ -22,17 +41,24 @@
 
     font-size: 1.2rem;
     font-weight: 400;
+    line-height: 1.8;
     text-align: center;
     color: #14274A;
+
+    max-width: 850px;
 }
 
 .about img {
     margin-top: 2rem;
     width: 80%;
+
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
 }
 
 @media screen and (max-width: 991px) {
     .about img {
         width: 100%;
+        border-radius: var(--radius-md);
     }
 }

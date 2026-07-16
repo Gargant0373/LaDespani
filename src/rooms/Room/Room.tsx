@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Room.css";
 import MediaSlider from "./MediaSlider";
 import BathtubIcon from "@mui/icons-material/Bathtub";
@@ -8,8 +7,7 @@ import WcIcon from '@mui/icons-material/Wc';
 import TvIcon from '@mui/icons-material/Tv';
 import LockIcon from '@mui/icons-material/Lock';
 import DryCleaningIcon from '@mui/icons-material/DryCleaning';
-import { SvgIconTypeMap } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { SvgIconComponent } from "@mui/icons-material";
 
 export interface RoomProps {
     title: string;
@@ -21,62 +19,54 @@ export interface RoomProps {
     }
 }
 
-const facilityIcons: { [key: string]: OverridableComponent<SvgIconTypeMap<{}, "svg">> } = {
-    bathtub: BathtubIcon,
-    shower: ShowerIcon,
-    balcony: BalconyIcon,
-    privateBathroom: WcIcon,
-    TV: TvIcon,
-    safeDeposit: LockIcon,
-    towels: DryCleaningIcon
+type FacilityMeta = {
+    icon: SvgIconComponent;
+    label: string;
+};
+
+const facilityMeta: { [key: string]: FacilityMeta } = {
+    privateBathroom: { icon: WcIcon, label: "Private bathroom" },
+    bathtub: { icon: BathtubIcon, label: "Bathtub" },
+    shower: { icon: ShowerIcon, label: "Shower" },
+    balcony: { icon: BalconyIcon, label: "Balcony" },
+    safeDeposit: { icon: LockIcon, label: "Safe deposit" },
+    TV: { icon: TvIcon, label: "TV" },
+    towels: { icon: DryCleaningIcon, label: "Towels" },
 };
 
 function Room(props: RoomProps) {
-    const [open, setOpen] = useState(false);
-    
-    const toggle = () => {
-        setOpen(!open);
-    }
-
-    return <>
-        <div className="room">
-            <MediaSlider images={props.images} />
-            <div className="strip">{props.title}</div>
-            <div className={`expand ${open ? "expanded" : ""}`}>
-                <div className="details">
-                    <button onClick={toggle}>{open ? "-" : "+"}</button>
-                    <span>{open ? "HIDE" : "VIEW"} ROOM DETAILS</span>
-                </div>
-                {open && 
-                    <div className="description">
-                        <p>{props.description}</p>
-                        <p><b>Facilities:</b></p>
-                        <ul>
-                                {Object.entries(props.facilities).map(
-                                    ([facility, available]) =>
-                                        {
-                                            if (available) {
-                                                const IconComponent = facilityIcons[facility];
-                                                return (
-                                                    <li key={facility} className="facility">
-                                                        <IconComponent className="icon" />
-                                                        <span className="text">
-                                                            {facility
-                                                                .replace(/([A-Z])/g, " $1")
-                                                                .replace(/^./, (str) => str.toUpperCase())}
-                                                        </span>
-                                                    </li>
-                                                );
-                                            }
-                                        }
-                                )}
-                            </ul>
-                        <p>Price: <b>{props.price} RON</b></p>
-                    </div>
-                }
+    return (
+        <article className="room">
+            <div className="media">
+                <MediaSlider images={props.images} alt={props.title} />
             </div>
-        </div>
-    </>
+            <div className="content">
+                <h3 className="name">{props.title}</h3>
+                <p className="description">{props.description}</p>
+                <ul className="amenities">
+                    {Object.entries(props.facilities).map(([facility, available]) => {
+                        const meta = facilityMeta[facility];
+                        if (!available || !meta) return null;
+                        const Icon = meta.icon;
+                        return (
+                            <li key={facility} className="amenity">
+                                <Icon className="icon" />
+                                <span>{meta.label}</span>
+                            </li>
+                        );
+                    })}
+                </ul>
+                <div className="booking">
+                    <div className="price">
+                        {props.price} RON<span className="per-night"> / night</span>
+                    </div>
+                    <button className="book-room" onClick={() => window.location.href = "/contact"}>
+                        BOOK NOW
+                    </button>
+                </div>
+            </div>
+        </article>
+    );
 }
 
 export default Room;

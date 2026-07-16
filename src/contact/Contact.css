@@ -3,6 +3,7 @@
     margin-right: auto;
 
     width: 80%;
+    max-width: 900px;
 
     color: #14274A;
 }
@@ -16,18 +17,44 @@
 
     font-size: 1.6rem;
     font-weight: 700;
-}   
+    letter-spacing: 0.1rem;
+}
+
+.contact .main .title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: var(--gold);
+    margin-top: 0.8rem;
+}
+
+.contact .main .text {
+    margin-top: 1rem;
+    line-height: 1.7;
+    color: var(--ink-muted);
+}
 
 .contact .info {
     padding-top: 3rem;
-    
+
     margin-left: auto;
     margin-right: auto;
+
+    line-height: 1.8;
 }
 
 .contact .info a {
     color: #14274A;
     text-decoration: none;
+
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.contact .info a:hover {
+    color: var(--gold-dark);
 }
 
 .contact .info .map {

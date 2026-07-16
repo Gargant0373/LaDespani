@@ -10,11 +10,28 @@
 .rooms .text .title {
     font-size: 2rem;
     font-weight: 600;
+    letter-spacing: 0.15rem;
 
     margin-top: 3rem;
     margin-bottom: 2rem;
 }
 
+.rooms .text .title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: var(--gold);
+    margin: 1rem auto 0;
+}
+
 .rooms .text .subtitle {
     font-weight: 500;
+    line-height: 1.7;
+    color: var(--ink-muted);
+
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
 }

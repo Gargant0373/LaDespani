@@ -20,7 +20,7 @@
     justify-content: center;
 
     padding-left: 20px;
-    border-left: 1px solid #14274A;
+    border-left: 3px solid var(--gold);
 
     height: max-content;
 }
@@ -32,6 +32,8 @@
 
 .landing-card .left .text {
     margin-top: 1rem;
+    line-height: 1.7;
+    color: var(--ink-muted);
 }
 
 .landing-card .left button {
@@ -50,17 +52,43 @@
 
     color: #FFF;
     font-weight: 600;
-    border-radius: 6px;
+    letter-spacing: 0.08rem;
+    border-radius: 8px;
+
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition:
+        transform 0.3s var(--ease-spring),
+        box-shadow 0.3s var(--ease-out),
+        background-color 0.3s ease;
 }
 
 .landing-card .left button:hover {
-    background-color: #b6975d;
-    cursor: pointer;
+    background-color: #d4ab61;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.landing-card .left button:active {
+    transform: translateY(0);
+}
+
+.landing-card .right {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    line-height: 0;
 }
 
 .landing-card .right img {
     width: 30rem;
     height: auto;
+
+    transition: transform 0.7s var(--ease-out);
+}
+
+.landing-card .right:hover img {
+    transform: scale(1.05);
 }
 
 @media screen and (max-width: 991px) {
@@ -74,7 +102,7 @@
     .landing-card .left {
         width: 100%;
         padding: 0;
-        
+
         border-left: 0;
     }
 
@@ -88,12 +116,17 @@
 
     .landing-card .left button {
         font-size: 0.6rem;
-        
+
         margin-left: 0;
         margin-top: 1rem;
 
         padding-left: 1.3rem;
         padding-right: 1.3rem;
+    }
+
+    .landing-card .right {
+        width: 100%;
+        border-radius: var(--radius-md);
     }
 
     .landing-card .right img {

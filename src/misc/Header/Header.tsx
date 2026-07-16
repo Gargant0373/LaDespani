@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Book.css";
 import "./Header.css";
 import "./Hero.css";
@@ -26,6 +26,33 @@ function Header(props: HeaderProps) {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
+    useEffect(() => {
+        if (!isMenuOpen) return;
+
+        document.body.style.overflow = "hidden";
+
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") closeMenu();
+        };
+        const desktop = window.matchMedia("(min-width: 992px)");
+        const onDesktop = (event: MediaQueryListEvent) => {
+            if (event.matches) closeMenu();
+        };
+
+        window.addEventListener("keydown", onKeyDown);
+        desktop.addEventListener("change", onDesktop);
+
+        return () => {
+            document.body.style.overflow = "";
+            window.removeEventListener("keydown", onKeyDown);
+            desktop.removeEventListener("change", onDesktop);
+        };
+    }, [isMenuOpen]);
+
     const scrollDown = () => {
         window.scrollTo({
             top: window.innerHeight,
@@ -42,14 +69,26 @@ function Header(props: HeaderProps) {
                     <div className="title">LADESPANI</div>
                     <div className="subtitle">GUESTHOUSE</div>
                 </div>
-                <div className={`menu ${isMenuOpen ? "open" : ""}`}> 
+                <div
+                    id="primary-menu"
+                    className={`menu ${isMenuOpen ? "open" : ""}`}
+                    onClick={(event) => {
+                        if (event.target === event.currentTarget) closeMenu();
+                    }}
+                >
                     {menuItems.map((item, index) => (
-                        <a className="item" key={item.title} href={item.link} aria-current={props.selected === index ? 'page' : undefined}>
+                        <a className="item" key={item.title} href={item.link} onClick={closeMenu} aria-current={props.selected === index ? 'page' : undefined}>
                             {props.selected === index ? <b>{item.title}</b> : item.title}
                         </a>
                     ))}
                 </div>
-                <button className="hamburger" onClick={toggleMenu} aria-expanded={isMenuOpen} aria-label="Toggle navigation menu">
+                <button
+                    className={`hamburger ${isMenuOpen ? "open" : ""}`}
+                    onClick={toggleMenu}
+                    aria-expanded={isMenuOpen}
+                    aria-controls="primary-menu"
+                    aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                >
                     <span className="bar"></span>
                     <span className="bar"></span>
                     <span className="bar"></span>
@@ -59,7 +98,7 @@ function Header(props: HeaderProps) {
                 <span className="item">WELCOME TO</span>
                 <span className="item">LaDespani</span>
                 <span className="item">GUESTHOUSE</span>
-                <span className="item">Accomodating people in Brasov since 2007</span>
+                <span className="item">Hosting travellers &amp; riders in Brasov since 2007</span>
             </div>
             <button className="book" onClick={() => window.location.href = "/contact"}>
                 <span className="icon">🏠︎</span>

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
     font-family: "Roboto", sans-serif;
     color: #14274a;
     text-align: center;
@@ -15,20 +15,41 @@
     font-weight: 600;
 }
 
+.testimonials .quote-mark {
+    font-family: Georgia, serif;
+    font-size: 4rem;
+    line-height: 0.6;
+    color: var(--gold);
+
+    margin-top: 1.2rem;
+    user-select: none;
+}
+
+.testimonials .slide {
+    animation: rise-in 0.5s var(--ease-out) both;
+
+    max-width: 620px;
+    width: 90%;
+}
+
 .testimonials .content {
     padding: 0.7rem;
-    
+
     font-size: 1.3rem;
-}    
+    line-height: 1.6;
+    font-style: italic;
+}
 
 .testimonials .name {
     color: #616161;
+    font-size: 0.95rem;
 }
 
 .testimonials .buttons {
     display: flex;
     flex-direction: row;
-    gap: 0.8rem;
+    align-items: center;
+    gap: 0.35rem;
     padding: 0.8rem;
 }
 
@@ -39,17 +60,49 @@
     border: 0;
     padding: 0.5rem;
     font-weight: 600;
-    border-radius: 6px;
+    border-radius: 50%;
 
-    width: 2rem;
-    height: 2rem;
+    width: 2.2rem;
+    height: 2.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     cursor: pointer;
-    transition: color 0.5s ease;
+    box-shadow: var(--shadow-sm);
+    transition:
+        transform 0.25s var(--ease-spring),
+        box-shadow 0.25s var(--ease-out),
+        color 0.25s ease;
 }
 
 .testimonials .buttons button:hover {
     color: #14274a;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.testimonials .dots {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.testimonials .dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(20, 39, 74, 0.2);
+
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s var(--ease-spring);
+}
+
+.testimonials .dots .dot.active {
+    background-color: var(--gold);
+    transform: scale(1.35);
 }
 
 @media screen and (max-width: 991px) {

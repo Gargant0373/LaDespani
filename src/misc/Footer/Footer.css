@@ -74,6 +74,16 @@
 
     text-decoration: none;
     color: #Fff;
+
+    width: max-content;
+    transition:
+        color 0.3s ease,
+        transform 0.3s var(--ease-out);
+}
+
+.footer .content .column .text2:hover {
+    color: var(--gold);
+    transform: translateX(4px);
 }
 
 @media screen and (max-width: 991px) {

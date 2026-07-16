@@ -76,7 +76,10 @@
     font-weight: 500;
     color: #FFF;
     font-size: 2.7rem;
+    letter-spacing: 0.2rem;
     padding-bottom: 5%;
+
+    animation: rise-in 0.9s var(--ease-out) 0.2s both;
 }
 
 @media screen and (max-width: 991px) {

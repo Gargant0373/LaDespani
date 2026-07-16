@@ -4,5 +4,19 @@
     font-size: 1.3rem;
     font-weight: 500;
 
-    margin-top: 2rem;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.5rem;
+    margin-bottom: 0;
+}
+
+.motto::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: var(--gold);
+    margin: 1rem auto 0;
 }
