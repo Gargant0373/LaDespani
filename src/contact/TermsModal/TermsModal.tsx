@@ -12,7 +12,7 @@ const termsData = [
         clauses: [
             "1.1 These Terms and Conditions govern the booking, stay, and use of services at LaDespani Guesthouse. By making a booking, guests agree to comply with these terms.",
             "1.2 LaDespani Guesthouse is located at Mihai Viteazul 128, Brasov, Romania.",
-            "1.3 Contact details: +40772269013, anudani241@hotmail.com"
+            "1.3 Contact details: +40721373747, anudani241@hotmail.com"
         ]
     },
     {
