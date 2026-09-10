@@ -1,70 +1,72 @@
 import { useEffect } from 'react';
+import { buildMeta } from './seoData';
+import { Lang, PageKey } from '../i18n/config';
 
-interface SeoProps {
-  title: string;
-  description: string;
-  canonical: string;
-  schema?: Record<string, any> | Record<string, any>[];
-  image?: string; // absolute or relative path
-  noIndex?: boolean; // when true set robots noindex
-  robots?: string; // custom robots directive overrides noIndex
-}
-
-// Lightweight SEO component: sets document title, meta description, canonical link, OG tags, optional JSON-LD, robots.
-export function Seo({ title, description, canonical, schema, image, noIndex, robots }: SeoProps) {
+/**
+ * Keeps the document head in sync with the page being shown.
+ *
+ * The prerenderer writes these same tags into the static HTML at build time
+ * (from the same buildMeta source), so this component is mostly a safety net
+ * for client-side navigation. Both paths agree by construction.
+ */
+export function Seo({ page, lang }: { page: PageKey; lang: Lang }) {
   useEffect(() => {
-    if (typeof document === 'undefined') return; // SSR safety
+    if (typeof document === 'undefined') return;
 
-    document.title = title;
+    const meta = buildMeta(page, lang);
 
-    setMetaName('description', description);
+    document.documentElement.setAttribute('lang', meta.htmlLang);
+    document.title = meta.title;
 
-    const linkCanonical = ensureTag('link[rel="canonical"]', 'link') as HTMLLinkElement;
-    linkCanonical.setAttribute('rel', 'canonical');
-    linkCanonical.setAttribute('href', canonical);
+    setMetaName('description', meta.description);
+    setMetaName('robots', meta.robots);
+    setLink('canonical', meta.canonical);
 
-    // Robots
-    if (robots || noIndex) {
-      const robotsContent = robots || (noIndex ? 'noindex,follow' : 'index,follow');
-      setMetaName('robots', robotsContent);
-    }
-
-    // OpenGraph basic
-    setMetaProperty('og:title', title);
-    setMetaProperty('og:description', description);
-    setMetaProperty('og:url', canonical);
-    if (image) setMetaProperty('og:image', absolutize(image));
+    setMetaProperty('og:title', meta.title);
+    setMetaProperty('og:description', meta.description);
+    setMetaProperty('og:url', meta.canonical);
+    setMetaProperty('og:image', meta.ogImage);
     setMetaProperty('og:type', 'website');
+    setMetaProperty('og:locale', meta.ogLocale);
 
-    // Twitter basic
     setMetaName('twitter:card', 'summary_large_image');
-    setMetaName('twitter:title', title);
-    setMetaName('twitter:description', description);
-    if (image) setMetaName('twitter:image', absolutize(image));
+    setMetaName('twitter:title', meta.title);
+    setMetaName('twitter:description', meta.description);
+    setMetaName('twitter:image', meta.ogImage);
 
-    // JSON-LD
-    const existing = document.getElementById('ld-json');
-    if (schema) {
-      const script = (existing as HTMLScriptElement | null) || document.createElement('script');
-      (script as HTMLScriptElement).type = 'application/ld+json';
-      script.id = 'ld-json';
-      (script as HTMLScriptElement).text = JSON.stringify(schema, null, 2);
-      if (!existing) document.head.appendChild(script);
-    } else if (existing) {
-      existing.remove();
+    // Replace the full set of hreflang links so stale ones cannot linger.
+    document.head
+      .querySelectorAll('link[rel="alternate"][hreflang]')
+      .forEach((el) => el.remove());
+    for (const alt of meta.alternates) {
+      const link = document.createElement('link');
+      link.setAttribute('rel', 'alternate');
+      link.setAttribute('hreflang', alt.hreflang);
+      link.setAttribute('href', alt.href);
+      document.head.appendChild(link);
     }
-  }, [title, description, canonical, schema, image, noIndex, robots]);
+
+    document.head.querySelectorAll('script[data-ld]').forEach((el) => el.remove());
+    for (const block of meta.schema) {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-ld', '');
+      script.text = JSON.stringify(block);
+      document.head.appendChild(script);
+    }
+  }, [page, lang]);
 
   return null;
 }
 
-function ensureTag(selector: string, tag: string = 'meta') {
-  let el = document.head.querySelector(selector) as HTMLElement | null;
+function setLink(rel: string, href: string) {
+  let el = document.head.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
   if (!el) {
-    el = document.createElement(tag);
+    el = document.createElement('link');
+    el.setAttribute('rel', rel);
     document.head.appendChild(el);
   }
-  return el as HTMLElement;
+  el.setAttribute('href', href);
 }
 
 function setMetaProperty(property: string, content: string) {
@@ -85,10 +87,4 @@ function setMetaName(name: string, content: string) {
     document.head.appendChild(el);
   }
   el.setAttribute('content', content);
-}
-
-function absolutize(url: string) {
-  if (/^https?:\/\//i.test(url)) return url;
-  const base = (typeof window !== 'undefined' ? window.location.origin : '').replace(/\/$/, '');
-  return `${base}/${url.replace(/^\//, '')}`;
 }

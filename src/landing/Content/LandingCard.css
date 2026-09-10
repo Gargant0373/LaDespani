@@ -39,7 +39,7 @@
     color: var(--ink-muted);
 }
 
-.landing-card .left button {
+.landing-card .left .explore {
     width: min-content;
 
     margin-top: 2rem;
@@ -66,13 +66,13 @@
         background-color 0.3s ease;
 }
 
-.landing-card .left button:hover {
+.landing-card .left .explore:hover {
     background-color: #d4ab61;
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
 
-.landing-card .left button:active {
+.landing-card .left .explore:active {
     transform: translateY(0);
 }
 
@@ -134,7 +134,7 @@
         font-size: 0.8rem;
     }
 
-    .landing-card .left button {
+    .landing-card .left .explore {
         font-size: 0.6rem;
 
         margin-left: 0;

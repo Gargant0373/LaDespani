@@ -8,8 +8,13 @@ interface FacilityProps {
 function Facility(props: FacilityProps) {
     return <>
         <div className="facility">
-            <img src={"images/" + props.image} alt={props.title} />
-            <div className="title">{props.title}</div>
+            <img
+                src={`/images/${props.image}`}
+                alt={`${props.title} — Pensiunea LaDespani, Brașov`}
+                loading="lazy"
+                decoding="async"
+            />
+            <h2 className="title">{props.title}</h2>
         </div>
     </>
 }

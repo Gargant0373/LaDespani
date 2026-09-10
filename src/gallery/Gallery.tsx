@@ -4,11 +4,16 @@ import Header from "../misc/Header/Header";
 import "./Gallery.css";
 import Masonry from "react-masonry-css";
 import { Seo } from "../misc/Seo";
+import { useI18n } from "../i18n/LanguageContext";
+import { GALLERY_IMAGE_COUNT } from "../data/site";
 
 function Gallery() {
-    const totalImages = 51;
-    const images = Array.from({ length: totalImages }, (_, index) => `images/gallery/${index + 1}.webp`);
-    
+    const { c, lang } = useI18n();
+    const images = Array.from(
+        { length: GALLERY_IMAGE_COUNT },
+        (_, index) => `/images/gallery/${index + 1}.webp`,
+    );
+
     const breakpointColumnsObj = {
         default: 3,
         1100: 3,
@@ -18,22 +23,14 @@ function Gallery() {
 
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-    const schema = {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "Photo Gallery - LaDespani Guesthouse",
-        "about": "Images of rooms, facilities and surroundings of LaDespani Guesthouse in Brasov.",
-        "hasPart": images.slice(0, 12).map(src => ({
-            "@type": "ImageObject",
-            "contentUrl": `https://ladespani.ro/${src}`,
-            "name": src.split('/').pop()
-        }))
-    };
-
     return (
         <>
-            <Seo title="Gallery | LaDespani Motorcycle-Friendly Guesthouse Brasov" description="Browse the LaDespani Guesthouse photo gallery: cozy rooms, the garden, indoor parking and facilities of our motorcycle-friendly guesthouse in Brasov." canonical="https://ladespani.ro/gallery" schema={schema} />
-            <Header image="gallery.webp" selected={3} />
+            <Seo page="gallery" lang={lang} />
+            <Header image="gallery.webp" />
+            <div className="gallery-intro">
+                <h1 className="title">{c.gallery.h1}</h1>
+                <p className="subtitle">{c.gallery.intro}</p>
+            </div>
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className="masonry-grid"
@@ -43,8 +40,9 @@ function Gallery() {
                     <div key={index} className="gallery-item">
                         <img
                             src={src}
-                            alt={`LaDespani Guesthouse Brasov — photo ${index + 1} of our rooms, garden and facilities`}
+                            alt={c.gallery.photoAlt(index + 1)}
                             loading="lazy"
+                            decoding="async"
                             onClick={() => setSelectedImage(src)}
                         />
                     </div>
@@ -54,7 +52,7 @@ function Gallery() {
             {/* Modal for large screen popup */}
             {selectedImage && (
                 <div className="modal" onClick={() => setSelectedImage(null)}>
-                    <img src={selectedImage} alt="Selected" />
+                    <img src={selectedImage} alt="" />
                 </div>
             )}
 

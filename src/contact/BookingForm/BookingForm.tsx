@@ -4,6 +4,7 @@ import emailjs from 'emailjs-com';
 import ReCAPTCHA from 'react-google-recaptcha';
 import './BookingForm.css';
 import TermsModal from '../TermsModal/TermsModal.tsx';
+import { useI18n } from '../../i18n/LanguageContext';
 
 type FormValues = {
     name: string;
@@ -20,6 +21,7 @@ type FormValues = {
 type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
 const BookingForm: React.FC = () => {
+    const { c } = useI18n();
     const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>();
     const [isTermsModalOpen, setTermsModalOpen] = useState(false);
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
@@ -41,13 +43,13 @@ const BookingForm: React.FC = () => {
 
         if (!serviceID || !templateID || !userID) {
             console.error('EmailJS environment variables are not set');
-            setErrorMessage('Email service is currently unavailable. Please try again later.');
+            setErrorMessage(c.form.serviceUnavailable);
             setStatus('error');
             return;
         }
 
         if (!captchaToken) {
-            setErrorMessage('Please complete the reCAPTCHA before submitting.');
+            setErrorMessage(c.form.captchaRequired);
             setStatus('error');
             return;
         }
@@ -80,7 +82,7 @@ const BookingForm: React.FC = () => {
             recaptchaRef.current?.reset();
         } catch (error) {
             console.error('Error sending email:', error);
-            setErrorMessage('There was a problem sending your request. Please try again, or call us directly.');
+            setErrorMessage(c.form.sendError);
             setStatus('error');
             setCaptchaToken(null);
             recaptchaRef.current?.reset();
@@ -107,14 +109,11 @@ const BookingForm: React.FC = () => {
                         <path className="booking-confirmation__check" fill="none" d="M14 27l8 8 16-17" />
                     </svg>
                 </div>
-                <h3 className="booking-confirmation__title">Booking request sent!</h3>
-                <p className="booking-confirmation__text">
-                    Thank you for choosing LaDespani. We have received your request and will
-                    get back to you as soon as possible.
-                </p>
+                <h3 className="booking-confirmation__title">{c.form.successTitle}</h3>
+                <p className="booking-confirmation__text">{c.form.successText}</p>
                 {confirmationEmail && (
                     <p className="booking-confirmation__text">
-                        A confirmation email is on its way to <b>{confirmationEmail}</b>.
+                        {c.form.confirmationPrefix}<b>{confirmationEmail}</b>{c.form.confirmationSuffix}
                     </p>
                 )}
                 <button
@@ -122,7 +121,7 @@ const BookingForm: React.FC = () => {
                     className="booking-confirmation__button"
                     onClick={() => setStatus('idle')}
                 >
-                    Send another request
+                    {c.form.sendAnother}
                 </button>
             </div>
         );
@@ -132,50 +131,51 @@ const BookingForm: React.FC = () => {
         <>
             <form className="booking-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="booking-form__field">
-                    <label className="booking-form__label">Name</label>
-                    <input type="text" className="booking-form__input" {...register('name', { required: true })} placeholder="Enter your name" />
-                    {errors.name && <p className="booking-form__error">Name is required</p>}
+                    <label className="booking-form__label">{c.form.name}</label>
+                    <input type="text" className="booking-form__input" {...register('name', { required: true })} placeholder={c.form.namePh} />
+                    {errors.name && <p className="booking-form__error">{c.form.errName}</p>}
                 </div>
                 <div className="booking-form__field">
-                    <label className="booking-form__label">Check-in Date</label>
+                    <label className="booking-form__label">{c.form.checkin}</label>
                     <input type="date" className="booking-form__input" {...register('checkinDate', { required: true })} />
-                    {errors.checkinDate && <p className="booking-form__error">Check-in date is required</p>}
+                    {errors.checkinDate && <p className="booking-form__error">{c.form.errCheckin}</p>}
                 </div>
                 <div className="booking-form__field">
-                    <label className="booking-form__label">Check-out Date</label>
+                    <label className="booking-form__label">{c.form.checkout}</label>
                     <input type="date" className="booking-form__input" {...register('checkoutDate', { required: true })} />
-                    {errors.checkoutDate && <p className="booking-form__error">Check-out date is required</p>}
+                    {errors.checkoutDate && <p className="booking-form__error">{c.form.errCheckout}</p>}
                 </div>
                 <div className="booking-form__field">
-                    <label className="booking-form__label">Number of Adults</label>
-                    <input type="number" className="booking-form__input" {...register('adults', { required: true, min: 1 })} placeholder="Enter number of adults" />
-                    {errors.adults && <p className="booking-form__error">At least 1 adult is required</p>}
+                    <label className="booking-form__label">{c.form.adults}</label>
+                    <input type="number" className="booking-form__input" {...register('adults', { required: true, min: 1 })} placeholder={c.form.adultsPh} />
+                    {errors.adults && <p className="booking-form__error">{c.form.errAdults}</p>}
                 </div>
                 <div className="booking-form__field">
-                    <label className="booking-form__label">Number of Kids</label>
-                    <input type="number" className="booking-form__input" {...register('kids', { required: true, min: 0 })} placeholder="Enter number of kids" />
-                    {errors.kids && <p className="booking-form__error">Number of kids is required</p>}
+                    <label className="booking-form__label">{c.form.kids}</label>
+                    <input type="number" className="booking-form__input" {...register('kids', { required: true, min: 0 })} placeholder={c.form.kidsPh} />
+                    {errors.kids && <p className="booking-form__error">{c.form.errKids}</p>}
                 </div>
                 <div className="booking-form__field">
-                    <label className="booking-form__label">Phone Number</label>
-                    <input type="tel" className="booking-form__input" {...register('phone', { required: true, pattern: /^\+?\d{10,15}$/ })} placeholder="Enter your phone number" />
-                    {errors.phone && <p className="booking-form__error">Valid phone number is required</p>}
+                    <label className="booking-form__label">{c.form.phone}</label>
+                    <input type="tel" className="booking-form__input" {...register('phone', { required: true, pattern: /^\+?\d{10,15}$/ })} placeholder={c.form.phonePh} />
+                    {errors.phone && <p className="booking-form__error">{c.form.errPhone}</p>}
                 </div>
                 <div className="booking-form__field">
-                    <label className="booking-form__label">Email</label>
-                    <input type="email" className="booking-form__input" {...register('email', { required: true })} placeholder="Enter your email" />
-                    {errors.email && <p className="booking-form__error">Email is required</p>}
+                    <label className="booking-form__label">{c.form.email}</label>
+                    <input type="email" className="booking-form__input" {...register('email', { required: true })} placeholder={c.form.emailPh} />
+                    {errors.email && <p className="booking-form__error">{c.form.errEmail}</p>}
                 </div>
                 <div className="booking-form__field">
-                    <label className="booking-form__label">Description</label>
-                    <textarea className="booking-form__textarea" {...register('description')} placeholder="Additional information" />
+                    <label className="booking-form__label">{c.form.description}</label>
+                    <textarea className="booking-form__textarea" {...register('description')} placeholder={c.form.descriptionPh} />
                 </div>
                 <div>
-                    <input type="checkbox" className="booking-form__checkbox" {...register('terms', { required: true })} />
-                    <label className="booking-form__terms">
-                        I agree to the <a className='terms' onClick={openTermsModal}>terms and conditions</a>
-                    </label>
-                    {errors.terms && <p className="booking-form__error">You must agree to the terms and conditions</p>}
+                    <input id="booking-terms" type="checkbox" className="booking-form__checkbox" {...register('terms', { required: true })} />
+                    {/* The trigger sits outside the label so clicking it opens the
+                        terms instead of toggling the checkbox. */}
+                    <label className="booking-form__terms" htmlFor="booking-terms">{c.form.agreePrefix}</label>
+                    <button type="button" className="terms as-link" onClick={openTermsModal}>{c.form.termsLink}</button>
+                    {errors.terms && <p className="booking-form__error">{c.form.errTerms}</p>}
                 </div>
 
                 <div className="captcha-container">
@@ -187,7 +187,7 @@ const BookingForm: React.FC = () => {
                         />
                     ) : (
                         <div className="booking-form__error" role="alert">
-                            CAPTCHA unavailable. Please set it up or continue; manual review may apply.
+                            {c.form.captchaUnavailable}
                         </div>
                     )}
                 </div>
@@ -202,10 +202,10 @@ const BookingForm: React.FC = () => {
                     {status === 'sending' ? (
                         <>
                             <span className="booking-form__spinner" aria-hidden="true"></span>
-                            Sending...
+                            {c.form.sending}
                         </>
                     ) : (
-                        'Submit'
+                        c.form.submit
                     )}
                 </button>
             </form>

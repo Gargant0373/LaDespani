@@ -8,61 +8,51 @@ import TvIcon from '@mui/icons-material/Tv';
 import LockIcon from '@mui/icons-material/Lock';
 import DryCleaningIcon from '@mui/icons-material/DryCleaning';
 import { SvgIconComponent } from "@mui/icons-material";
+import { RoomData } from "../../data/site";
+import { useI18n } from "../../i18n/LanguageContext";
 
-export interface RoomProps {
-    title: string;
-    images: string[];
-    description: string;
-    price: number;
-    facilities: {
-        [key: string]: boolean;
-    }
-}
-
-type FacilityMeta = {
-    icon: SvgIconComponent;
-    label: string;
+const facilityIcons: { [key: string]: SvgIconComponent } = {
+    privateBathroom: WcIcon,
+    bathtub: BathtubIcon,
+    shower: ShowerIcon,
+    balcony: BalconyIcon,
+    safeDeposit: LockIcon,
+    TV: TvIcon,
+    towels: DryCleaningIcon,
 };
 
-const facilityMeta: { [key: string]: FacilityMeta } = {
-    privateBathroom: { icon: WcIcon, label: "Private bathroom" },
-    bathtub: { icon: BathtubIcon, label: "Bathtub" },
-    shower: { icon: ShowerIcon, label: "Shower" },
-    balcony: { icon: BalconyIcon, label: "Balcony" },
-    safeDeposit: { icon: LockIcon, label: "Safe deposit" },
-    TV: { icon: TvIcon, label: "TV" },
-    towels: { icon: DryCleaningIcon, label: "Towels" },
-};
+function Room({ data }: { data: RoomData }) {
+    const { c, path } = useI18n();
+    const copy = c.rooms.items.find((item) => item.key === data.key);
 
-function Room(props: RoomProps) {
     return (
         <article className="room">
             <div className="media">
-                <MediaSlider images={props.images} alt={props.title} />
+                <MediaSlider images={data.images} alt={copy?.title ?? data.key} />
             </div>
             <div className="content">
-                <h3 className="name">{props.title}</h3>
-                <p className="description">{props.description}</p>
+                <h2 className="name">{copy?.title ?? data.key}</h2>
+                <p className="description">{copy?.description}</p>
                 <ul className="amenities">
-                    {Object.entries(props.facilities).map(([facility, available]) => {
-                        const meta = facilityMeta[facility];
-                        if (!available || !meta) return null;
-                        const Icon = meta.icon;
+                    {Object.entries(data.facilities).map(([facility, available]) => {
+                        const Icon = facilityIcons[facility];
+                        const label = c.rooms.amenities[facility];
+                        if (!available || !Icon || !label) return null;
                         return (
                             <li key={facility} className="amenity">
                                 <Icon className="icon" />
-                                <span>{meta.label}</span>
+                                <span>{label}</span>
                             </li>
                         );
                     })}
                 </ul>
                 <div className="booking">
                     <div className="price">
-                        {props.price} RON<span className="per-night"> / night</span>
+                        {data.price} RON<span className="per-night">{c.rooms.perNight}</span>
                     </div>
-                    <button className="book-room" onClick={() => window.location.href = "/contact"}>
-                        BOOK NOW
-                    </button>
+                    <a className="book-room" href={path("contact")}>
+                        {c.common.bookNow}
+                    </a>
                 </div>
             </div>
         </article>

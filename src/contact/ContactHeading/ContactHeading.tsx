@@ -1,18 +1,21 @@
 import "./ContactHeading.css";
+import { useI18n } from "../../i18n/LanguageContext";
 
 function ContactHeading() {
+    const { c, path } = useI18n();
+
     return <>
-        <nav className="contact-heading">
+        <nav className="contact-heading" aria-label={c.common.mainNav}>
             <div className="container">
-                <div className="logo">
+                <a className="logo" href={path("home")}>
                     <div className="title">LADESPANI</div>
                     <div className="subtitle">GUESTHOUSE</div>
-                </div>
-                <div className="menu"> 
-                    <a className="item" href="/">Go back</a>
+                </a>
+                <div className="menu">
+                    <a className="item" href={path("home")}>{c.common.goBack}</a>
                 </div>
             </div>
-            <div className="heading">CONTACT-US</div>
+            <div className="heading">{c.contact.heading}</div>
         </nav>
     </>
 }

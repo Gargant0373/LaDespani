@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useI18n } from "../../i18n/LanguageContext";
 import "./MediaSlider.css";
 
 export interface MediaSliderProps {
@@ -9,6 +10,7 @@ export interface MediaSliderProps {
 const delay = 4000;
 
 function MediaSlider(props: MediaSliderProps) {
+    const { c } = useI18n();
     const [index, setIndex] = useState(0);
     const [paused, setPaused] = useState(false);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -55,15 +57,15 @@ function MediaSlider(props: MediaSliderProps) {
                 className="slide"
                 key={idx}
               >
-                <img src={`images/${image}`} alt={props.alt ? `${props.alt} photo ${idx + 1}` : "room"} loading="lazy" />
+                <img src={`/images/${image}`} alt={props.alt ? `${props.alt} photo ${idx + 1}` : "room"} loading="lazy" />
               </div>
             ))}
           </div>
 
           {props.images.length > 1 && (
             <>
-              <button type="button" className="slideshowArrow prev" onClick={previous} aria-label="Previous photo">‹</button>
-              <button type="button" className="slideshowArrow next" onClick={next} aria-label="Next photo">›</button>
+              <button type="button" className="slideshowArrow prev" onClick={previous} aria-label={c.rooms.prevPhoto}>‹</button>
+              <button type="button" className="slideshowArrow next" onClick={next} aria-label={c.rooms.nextPhoto}>›</button>
             </>
           )}
 

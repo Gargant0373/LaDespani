@@ -5,42 +5,27 @@ import "./Facilities.css";
 import Facility from "./Facility/Facility";
 import { Seo } from "../misc/Seo";
 import Reveal from "../misc/Reveal";
-
-const facilities = [
-    { title: "Secure Indoor Parking", image: "parking.webp" },
-    { title: "Ping pong", image: "pingpong.webp" },
-    { title: "Grill", image: "grill.webp" },
-    { title: "Trampoline", image: "trampoline.webp" },
-    { title: "Kitchen", image: "kitchen.webp" },
-    { title: "Laundry", image: "laundry.webp" },
-    { title: "Safe Locker", image: "safe.webp" },
-];
+import { useI18n } from "../i18n/LanguageContext";
+import { FACILITIES } from "../data/site";
 
 function Facilities() {
-    const schema = {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": "Facilities at LaDespani Guesthouse",
-        "itemListElement": facilities.map((f, i) => ({
-            "@type": "ListItem",
-            "position": i + 1,
-            "name": f.title
-        }))
-    };
+    const { c, lang } = useI18n();
 
     return <>
-        <Seo title="Facilities & Secure Motorcycle Parking | LaDespani Guesthouse Brasov" description="Facilities at LaDespani in Brasov: secure indoor parking for motorcycles and cars, guest kitchen, laundry, grill, trampoline, ping pong and safe lockers." canonical="https://ladespani.ro/facility" schema={schema} />
-    <Header image="facilities.webp" selected={1} />
+        <Seo page="facilities" lang={lang} />
+        <Header image="facilities.webp" />
         <section className="facilities">
             <Reveal>
                 <div className="text">
-                    <div className="title">FACILITIES</div>
-                    <div className="subtitle">We want your stay at our cozy guesthouse to be truly special. With thoughtful attention to every detail, we ensure you feel right at home. Riders get a proper welcome too: your motorcycle spends the night under a roof in our secure indoor parking, and the laundry is there when your gear needs a wash after a long day on the Carpathian passes. Enjoy beautiful views, a warm atmosphere, and friendly service that makes your visit unforgettable.</div>
+                    <h1 className="title">{c.facilities.h1}</h1>
+                    <p className="subtitle">{c.facilities.intro}</p>
                 </div>
             </Reveal>
-            {facilities.map((facility) => {
-                return <Reveal key={facility.title}><Facility title={facility.title} image={facility.image} /></Reveal>;
-            })}
+            {FACILITIES.map((facility) => (
+                <Reveal key={facility.key}>
+                    <Facility title={c.facilities.items[facility.key]} image={facility.image} />
+                </Reveal>
+            ))}
             <Testimonials />
             <Footer />
         </section>

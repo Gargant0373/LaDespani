@@ -4,21 +4,16 @@ import "./Header.css";
 import "./Hero.css";
 import "./Navbar.css";
 import "./Scroll.css";
+import { useI18n } from "../../i18n/LanguageContext";
+import { NAV_PAGES, PageKey, pathFor } from "../../i18n/config";
+import { CONTENT } from "../../i18n/content";
 
 interface HeaderProps {
     image: string;
-    selected: number;
 }
 
 function Header(props: HeaderProps) {
-    const menuItems = [
-        { title: "Home", link: "/" },
-        { title: "Facilities", link: "/facility" },
-        { title: "Rooms", link: "/rooms" },
-        { title: "Gallery", link: "/gallery" },
-        { title: "Contact", link: "/contact" },
-        { title: "About", link: "/about" }
-    ];
+    const { c, lang, otherLang, path, page } = useI18n();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -60,15 +55,18 @@ function Header(props: HeaderProps) {
         });
     };
 
+    // Same page, other language — this is the counterpart of the hreflang tags.
+    const switchHref = pathFor(page, otherLang);
+
     return <>
         <header className="header" style={{
-            backgroundImage: "url(images/" + props.image + ")",
+            backgroundImage: `url(/images/${props.image})`,
         }}>
-            <nav className="navbar" aria-label="Main navigation">
-                <div className="logo">
+            <nav className="navbar" aria-label={c.common.mainNav}>
+                <a className="logo" href={path("home")}>
                     <div className="title">LADESPANI</div>
                     <div className="subtitle">GUESTHOUSE</div>
-                </div>
+                </a>
                 <div
                     id="primary-menu"
                     className={`menu ${isMenuOpen ? "open" : ""}`}
@@ -76,18 +74,38 @@ function Header(props: HeaderProps) {
                         if (event.target === event.currentTarget) closeMenu();
                     }}
                 >
-                    {menuItems.map((item, index) => (
-                        <a className="item" key={item.title} href={item.link} onClick={closeMenu} aria-current={props.selected === index ? 'page' : undefined}>
-                            {props.selected === index ? <b>{item.title}</b> : item.title}
-                        </a>
-                    ))}
+                    {NAV_PAGES.map((key) => {
+                        const navKey = key as Exclude<PageKey, "card">;
+                        const label = c.nav[navKey];
+                        const active = page === key;
+                        return (
+                            <a
+                                className="item"
+                                key={key}
+                                href={path(key)}
+                                onClick={closeMenu}
+                                aria-current={active ? "page" : undefined}
+                            >
+                                {active ? <b>{label}</b> : label}
+                            </a>
+                        );
+                    })}
+                    <a
+                        className="item lang-switch"
+                        href={switchHref}
+                        hrefLang={otherLang}
+                        lang={otherLang}
+                        onClick={closeMenu}
+                    >
+                        {CONTENT[otherLang].langName}
+                    </a>
                 </div>
                 <button
                     className={`hamburger ${isMenuOpen ? "open" : ""}`}
                     onClick={toggleMenu}
                     aria-expanded={isMenuOpen}
                     aria-controls="primary-menu"
-                    aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                    aria-label={isMenuOpen ? c.common.closeMenu : c.common.openMenu}
                 >
                     <span className="bar"></span>
                     <span className="bar"></span>
@@ -95,17 +113,17 @@ function Header(props: HeaderProps) {
                 </button>
             </nav>
             <div className="hero" role="banner">
-                <span className="item">WELCOME TO</span>
+                <span className="item">{c.hero.welcome}</span>
                 <span className="item">LaDespani</span>
-                <span className="item">GUESTHOUSE</span>
-                <span className="item">Hosting travellers &amp; riders in Brasov since 2007</span>
+                <span className="item">{lang === "ro" ? "PENSIUNE" : "GUESTHOUSE"}</span>
+                <span className="item">{c.hero.tagline}</span>
             </div>
-            <button className="book" onClick={() => window.location.href = "/contact"}>
+            <a className="book" href={path("contact")}>
                 <span className="icon">🏠︎</span>
-                <span className="text">BOOK NOW</span>
-            </button>
+                <span className="text">{c.common.bookNow}</span>
+            </a>
             <span className="scroll" onClick={() => scrollDown()}>
-                <span className="text">Scroll</span>
+                <span className="text">{c.common.scroll}</span>
                 <span className="icon">▼</span>
             </span>
         </header>

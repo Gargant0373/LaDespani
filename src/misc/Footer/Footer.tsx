@@ -2,10 +2,13 @@ import { useState } from "react";
 import "./Footer.css";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import TermsModal from "../../contact/TermsModal/TermsModal";
+import { useI18n } from "../../i18n/LanguageContext";
+import { BUSINESS } from "../../data/site";
 
 function Footer() {
+    const { c, path } = useI18n();
     const [isTermsModalOpen, setTermsModalOpen] = useState(false);
-    
+
     const openTermsModal = () => setTermsModalOpen(true);
     const closeTermsModal = () => setTermsModalOpen(false);
 
@@ -17,17 +20,17 @@ function Footer() {
                 <div className="column">
                     <div className="title">LaDespani</div>
                     <div className="subtitle">GUESTHOUSE</div>
-                    <div className="text pad">Mihai Viteazul 128</div>
-                    <div className="text">Brasov, Romania</div>
+                    <div className="text pad">{c.footer.address1}</div>
+                    <div className="text">{c.footer.address2}</div>
                 </div>
                 <div className="column">
-                    <a className="text2" href="https://maps.app.goo.gl/xDLBLkZsb61cQ6eh8" target="_blank">Find Us</a>
-                    <a className="text2" onClick={() => window.location.href = "#contact"}>Contact</a>
-                    <a className="text2" onClick={() => openTermsModal()}>Terms and Conditions</a>
+                    <a className="text2" href={BUSINESS.mapUrl} target="_blank" rel="noopener">{c.footer.findUs}</a>
+                    <a className="text2" href={path("contact")}>{c.footer.contact}</a>
+                    <button className="text2 as-link" type="button" onClick={openTermsModal}>{c.footer.terms}</button>
                 </div>
                 <div className="column">
-                    <a className="text2" href="https://www.facebook.com/ladespani.guesthouse/" target="_blank"><FaFacebookF /> Facebook</a>
-                    <a className="text2" href="https://www.instagram.com/ladespaniguesthouse/" target="_blank"><FaInstagram /> Instagram</a>
+                    <a className="text2" href={BUSINESS.facebook} target="_blank" rel="noopener"><FaFacebookF /> Facebook</a>
+                    <a className="text2" href={BUSINESS.instagram} target="_blank" rel="noopener"><FaInstagram /> Instagram</a>
                 </div>
             </div>
         </footer>

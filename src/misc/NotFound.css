@@ -1,0 +1,81 @@
+.notfound {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.25rem;
+    background: #faf8f5;
+    color: #2b2b2b;
+}
+
+.notfound-inner {
+    max-width: 40rem;
+    text-align: center;
+}
+
+.notfound .logo {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 2rem;
+}
+
+.notfound .logo .title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    font-size: 1.35rem;
+}
+
+.notfound .logo .subtitle {
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 0.5em;
+    font-size: 0.7rem;
+    opacity: 0.65;
+}
+
+.notfound .code {
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(3.5rem, 12vw, 6rem);
+    font-weight: 800;
+    line-height: 1;
+    margin: 0 0 1rem;
+    opacity: 0.15;
+}
+
+.notfound h1,
+.notfound h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.4rem;
+    margin: 0 0 0.5rem;
+}
+
+.notfound h2 {
+    margin-top: 2rem;
+    font-size: 1.15rem;
+    opacity: 0.8;
+}
+
+.notfound p {
+    margin: 0 auto 0.5rem;
+    max-width: 32rem;
+    line-height: 1.6;
+}
+
+.notfound .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.notfound .links a {
+    color: #2b2b2b;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+}
+
+.notfound .links a:hover {
+    opacity: 0.65;
+}
