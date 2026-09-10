@@ -266,3 +266,36 @@
         display: block;
     }
 }
+
+/* The language switcher is a control, not a nav link: give it breathing room
+   from the section links and align it to their optical centre. */
+.header .navbar .menu .lang-switch {
+    align-self: center;
+    margin-left: 0.5rem;
+}
+
+@media screen and (max-width: 991px) {
+    /* Inside the full-screen menu it sits below the links, and joins the same
+       staggered entrance as the items above it. */
+    .header .navbar .menu .lang-switch {
+        margin-left: 0;
+        margin-top: 1.25rem;
+
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+            opacity 0.45s var(--ease-out),
+            transform 0.45s var(--ease-out);
+    }
+
+    .header .navbar .menu.open .lang-switch {
+        opacity: 1;
+        transform: none;
+        transition-delay: 0.4s;
+    }
+
+    .header .navbar .menu .lang-switch__option {
+        padding: 0.55rem 1.1rem;
+        font-size: 0.95rem;
+    }
+}

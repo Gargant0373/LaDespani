@@ -216,17 +216,6 @@ button {
     margin: 0 auto;
 }
 
-/* Language switcher sits apart from the section links. */
-.header .navbar .menu .lang-switch {
-    font-variant: small-caps;
-    letter-spacing: 0.06rem;
-    opacity: 0.85;
-}
-
-.header .navbar .menu .lang-switch:hover {
-    opacity: 1;
-}
-
 /* Available to screen readers, invisible on screen. */
 .visually-hidden {
     position: absolute;

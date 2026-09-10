@@ -111,3 +111,9 @@
         font-size: 2rem;
     }
 }
+/* The menu now holds the back link and the language switcher. */
+.contact-heading .container .menu {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}

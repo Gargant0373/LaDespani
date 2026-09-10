@@ -33,7 +33,7 @@ export interface Copy {
     openMenu: string;
     closeMenu: string;
     mainNav: string;
-    switchTo: string;
+    languageLabel: string;
   };
 
   home: {
@@ -167,7 +167,7 @@ const ro: Copy = {
     openMenu: 'Deschide meniul de navigare',
     closeMenu: 'Închide meniul de navigare',
     mainNav: 'Navigare principală',
-    switchTo: 'English',
+    languageLabel: 'Alegeți limba',
   },
 
   home: {
@@ -396,7 +396,7 @@ const en: Copy = {
     openMenu: 'Open navigation menu',
     closeMenu: 'Close navigation menu',
     mainNav: 'Main navigation',
-    switchTo: 'Română',
+    languageLabel: 'Choose language',
   },
 
   home: {

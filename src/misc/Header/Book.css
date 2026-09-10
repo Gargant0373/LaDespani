@@ -3,10 +3,11 @@
     z-index: 1;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 
-    width: 10rem;
+    width: fit-content;
+    min-width: 10rem;
 
     color: #FFF;
 
@@ -47,14 +48,9 @@
     font-weight: 600;
 }
 
-.header .book .icon {
-    font-size: 1.3rem;
-    padding-bottom: 0.25rem;
-}
-
 @media screen and (max-width: 991px) {
     .header .book {
-        width: 8rem;
+        min-width: 8rem;
         margin-top: 70px;
     }
 

@@ -1,0 +1,56 @@
+.lang-switch {
+    display: inline-flex;
+    align-items: stretch;
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 999px;
+    overflow: hidden;
+
+    background-color: rgba(20, 39, 74, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    line-height: 1;
+    transition: border-color 0.3s ease;
+}
+
+.lang-switch:hover {
+    border-color: rgba(224, 185, 115, 0.75);
+}
+
+.lang-switch__option {
+    padding: 0.4rem 0.75rem;
+
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+/* The divider sits between the two segments only. */
+.lang-switch__option + .lang-switch__option {
+    border-left: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+a.lang-switch__option:hover {
+    color: #FFF;
+    background-color: rgba(224, 185, 115, 0.28);
+}
+
+.lang-switch__option.is-active {
+    color: #14274A;
+    background-color: var(--gold, #E0B973);
+    cursor: default;
+}
+
+/* The switcher is not a nav link, so it must not pick up the underline
+   animation that .item carries. */
+.lang-switch__option:after {
+    content: none;
+}

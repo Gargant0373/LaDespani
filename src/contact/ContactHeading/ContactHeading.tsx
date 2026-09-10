@@ -1,5 +1,6 @@
 import "./ContactHeading.css";
 import { useI18n } from "../../i18n/LanguageContext";
+import LanguageSwitcher from "../../misc/LanguageSwitcher";
 
 function ContactHeading() {
     const { c, path } = useI18n();
@@ -13,6 +14,7 @@ function ContactHeading() {
                 </a>
                 <div className="menu">
                     <a className="item" href={path("home")}>{c.common.goBack}</a>
+                    <LanguageSwitcher />
                 </div>
             </div>
             <div className="heading">{c.contact.heading}</div>

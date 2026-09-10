@@ -8,14 +8,6 @@ export interface TermsCopy {
   sections: { title: string; clauses: string[] }[];
 }
 
-/**
- * NOTE: clause 4.1 still carries an unfilled placeholder from the original
- * English text. The cancellation window is a business decision, so it is
- * marked rather than invented.
- */
-const CANCELLATION_WINDOW_RO = '[de completat: termenul de anulare gratuită]';
-const CANCELLATION_WINDOW_EN = '[to be completed: free cancellation deadline]';
-
 const ro: TermsCopy = {
   title: 'Termeni și condiții',
   close: 'Închide',
@@ -32,7 +24,7 @@ const ro: TermsCopy = {
       title: '2. Rezervări și plăți',
       clauses: [
         '2.1 O rezervare este confirmată doar după primirea emailului de confirmare și, dacă este cazul, a avansului.',
-        '2.2 Avansul nu este rambursabil, cu excepția situațiilor prevăzute la secțiunea 5.',
+        '2.2 Avansul nu este rambursabil.',
         '2.3 Diferența de plată se achită la sosire, dacă nu s-a convenit altfel.',
         '2.4 Plata se poate face în numerar.',
       ],
@@ -48,8 +40,9 @@ const ro: TermsCopy = {
     {
       title: '4. Politica de anulare',
       clauses: [
-        `4.1 Oaspeții pot anula gratuit până la ${CANCELLATION_WINDOW_RO} înainte de sosire.`,
-        '4.2 Anulările făcute după acest termen sau neprezentarea duc la pierderea avansului și/sau a plății integrale, conform politicii de rezervare.',
+        '4.1 Rezervările nu sunt rambursabile. Nu există o perioadă de anulare gratuită: odată confirmată, o rezervare nu poate fi anulată fără costuri.',
+        '4.2 Anulările, modificările de dată și neprezentările duc la pierderea avansului și/sau a plății integrale.',
+        '4.3 Vă recomandăm să încheiați o asigurare de călătorie dacă doriți protecție în cazul unei anulări.',
       ],
     },
     {
@@ -119,7 +112,7 @@ const en: TermsCopy = {
       title: '2. Booking and Payments',
       clauses: [
         '2.1 A reservation is only confirmed upon receipt of a booking confirmation email and, if applicable, the deposit payment.',
-        '2.2 The deposit is non-refundable, except in circumstances outlined in section 5.',
+        '2.2 The deposit is non-refundable.',
         '2.3 The balance of the payment is due upon arrival unless stated otherwise.',
         '2.4 Payments can be made via cash.',
       ],
@@ -135,8 +128,9 @@ const en: TermsCopy = {
     {
       title: '4. Cancellation Policy',
       clauses: [
-        `4.1 Guests may cancel free of charge until ${CANCELLATION_WINDOW_EN} before arrival.`,
-        '4.2 Cancellations made after this period or no-shows will result in the loss of the deposit and/or full payment as per the booking policy.',
+        '4.1 Bookings are non-refundable. There is no free cancellation period: once a reservation is confirmed, it cannot be cancelled free of charge.',
+        '4.2 Cancellations, date changes and no-shows result in the loss of the deposit and/or the full payment.',
+        '4.3 We recommend taking out travel insurance if you would like cover in the event of a cancellation.',
       ],
     },
     {

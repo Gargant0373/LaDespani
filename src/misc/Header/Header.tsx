@@ -5,15 +5,15 @@ import "./Hero.css";
 import "./Navbar.css";
 import "./Scroll.css";
 import { useI18n } from "../../i18n/LanguageContext";
-import { NAV_PAGES, PageKey, pathFor } from "../../i18n/config";
-import { CONTENT } from "../../i18n/content";
+import { NAV_PAGES, PageKey } from "../../i18n/config";
+import LanguageSwitcher from "../LanguageSwitcher";
 
 interface HeaderProps {
     image: string;
 }
 
 function Header(props: HeaderProps) {
-    const { c, lang, otherLang, path, page } = useI18n();
+    const { c, lang, path, page } = useI18n();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -55,9 +55,6 @@ function Header(props: HeaderProps) {
         });
     };
 
-    // Same page, other language — this is the counterpart of the hreflang tags.
-    const switchHref = pathFor(page, otherLang);
-
     return <>
         <header className="header" style={{
             backgroundImage: `url(/images/${props.image})`,
@@ -90,15 +87,7 @@ function Header(props: HeaderProps) {
                             </a>
                         );
                     })}
-                    <a
-                        className="item lang-switch"
-                        href={switchHref}
-                        hrefLang={otherLang}
-                        lang={otherLang}
-                        onClick={closeMenu}
-                    >
-                        {CONTENT[otherLang].langName}
-                    </a>
+                    <LanguageSwitcher onNavigate={closeMenu} />
                 </div>
                 <button
                     className={`hamburger ${isMenuOpen ? "open" : ""}`}
@@ -119,7 +108,6 @@ function Header(props: HeaderProps) {
                 <span className="item">{c.hero.tagline}</span>
             </div>
             <a className="book" href={path("contact")}>
-                <span className="icon">🏠︎</span>
                 <span className="text">{c.common.bookNow}</span>
             </a>
             <span className="scroll" onClick={() => scrollDown()}>
