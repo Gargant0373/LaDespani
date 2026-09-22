@@ -1,5 +1,6 @@
 import "./LandingCard.css";
 import { useI18n } from "../../i18n/LanguageContext";
+import { imageAttrs } from "../../misc/images";
 
 interface LandingCardProps {
     title: string;
@@ -10,6 +11,7 @@ interface LandingCardProps {
 
 function LandingCard(props: LandingCardProps) {
     const { c } = useI18n();
+    const img = imageAttrs(props.image);
 
     return <>
         <section className="landing-card">
@@ -20,7 +22,11 @@ function LandingCard(props: LandingCardProps) {
             </div>
             <div className="right">
                 <img
-                    src={`/images/${props.image}`}
+                    src={img.src}
+                    srcSet={img.srcSet}
+                    sizes="(max-width: 991px) calc(100vw - 40px), 30rem"
+                    width={img.width}
+                    height={img.height}
                     alt={`${props.title} — Pensiunea LaDespani, Brașov`}
                     loading="lazy"
                     decoding="async"

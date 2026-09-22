@@ -45,7 +45,7 @@
     text-align: center;
     font-weight: 600;
     letter-spacing: 0.1rem;
-    color: #14274A;
+    color: var(--navy);
 }
 
 .facility .title::after {
@@ -59,18 +59,54 @@
 }
 
 @media screen and (max-width: 991px) {
-    .facility img {
-        width: 80%;
+    .facility {
+        margin: 1.5rem var(--gutter) 0;
+        display: block;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
     }
 
+    /* Consistent 4:3 tiles instead of a mix of landscape and portrait. */
+    .facility img {
+        display: block;
+        width: 100%;
+        max-width: none;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .facility:hover img {
+        transform: none;
+        box-shadow: none;
+    }
+
+    /* Caption becomes a full-width strip over the bottom of the photo. */
     .facility .title {
-        box-sizing: border-box;
-        width: max-content;
-        max-width: 80%;
+        left: 0;
+        right: 0;
+        transform: none;
+        width: auto;
         min-width: 0;
+        box-sizing: border-box;
 
-        padding: 0.4rem 0.8rem;
+        padding: 0.7rem 1rem;
+        border-radius: 0;
+        background: linear-gradient(180deg, rgba(20, 39, 74, 0) 0%, rgba(20, 39, 74, 0.82) 45%);
+        backdrop-filter: none;
+        box-shadow: none;
 
-        font-size: 0.9rem;
+        color: #FFF;
+        font-size: 1rem;
+        letter-spacing: 0.08rem;
+        text-shadow: 0 1px 8px rgba(20, 39, 74, 0.6);
+        padding-top: 2.25rem;
+    }
+
+    .facility .title::after {
+        width: 28px;
+        margin-top: 0.35rem;
     }
 }

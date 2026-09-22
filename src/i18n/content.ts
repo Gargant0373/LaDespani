@@ -30,6 +30,10 @@ export interface Copy {
     explore: string;
     scroll: string;
     goBack: string;
+    /** Label on tap-to-call links. */
+    call: string;
+    /** Short brand line shown above page titles. */
+    brand: string;
     openMenu: string;
     closeMenu: string;
     mainNav: string;
@@ -68,9 +72,10 @@ export interface Copy {
 
   contact: {
     h1: string;
-    heading: string;
     title: string;
     text: string;
+    callNow: string;
+    emailUs: string;
     viewMap: string;
     phone: string;
     email: string;
@@ -164,6 +169,8 @@ const ro: Copy = {
     explore: 'DESCOPERĂ',
     scroll: 'Derulează',
     goBack: 'Înapoi',
+    call: 'Sună',
+    brand: 'Pensiunea LaDespani',
     openMenu: 'Deschide meniul de navigare',
     closeMenu: 'Închide meniul de navigare',
     mainNav: 'Navigare principală',
@@ -285,10 +292,11 @@ const ro: Copy = {
 
   contact: {
     h1: 'Contact și rezervări',
-    heading: 'CONTACT',
     title: 'SUNTEM AICI PENTRU DUMNEAVOASTRĂ',
     text:
       'La Pensiunea LaDespani ne luăm oaspeții în serios. Dacă aveți întrebări, cereri sau nemulțumiri, sunați-ne și vă răspundem cât putem de repede. Călătoriți cu motocicleta? Spuneți-ne și pregătim un loc în parcarea interioară.',
+    callNow: 'Sună acum',
+    emailUs: 'Scrie-ne pe email',
     viewMap: 'Vezi harta →',
     phone: 'Telefon',
     email: 'Email',
@@ -393,6 +401,8 @@ const en: Copy = {
     explore: 'EXPLORE',
     scroll: 'Scroll',
     goBack: 'Go back',
+    call: 'Call',
+    brand: 'LaDespani Guesthouse',
     openMenu: 'Open navigation menu',
     closeMenu: 'Close navigation menu',
     mainNav: 'Main navigation',
@@ -514,10 +524,11 @@ const en: Copy = {
 
   contact: {
     h1: 'Contact and booking',
-    heading: 'CONTACT-US',
     title: 'WE ARE HERE FOR YOU',
     text:
       'At LaDespani Guesthouse we take our guests seriously. If you have any enquiries, complaints or requests, please call us and we will get back to you as soon as possible. Travelling by motorcycle? Let us know and we will have a spot in the indoor parking ready for your bike.',
+    callNow: 'Call us',
+    emailUs: 'Email us',
     viewMap: 'View map →',
     phone: 'Phone',
     email: 'Email',

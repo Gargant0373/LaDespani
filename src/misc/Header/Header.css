@@ -1,27 +1,94 @@
-.header {
-    width: 100%;
-    height: 100vh;
+/* The header is the hero band at the top of every page: a photo (or a plain
+   navy band), the fixed navbar over it, and the hero copy. It is a flex
+   column so the hero copy centres in whatever height is left after the
+   navbar, and the scroll cue sits at the bottom.
 
-    background-size: cover;
-    background-position: center;
-    background-color: #14274a81;
-    z-index: -1;
+   The header is a stacking context (the photo and tint sit at negative
+   z-index inside it), so it needs a z-index of its own: later sections that
+   animate (scroll reveals, sliders) create their own contexts and would
+   otherwise paint over the fixed navbar. Modals use z-index 1000 and still
+   win. */
+
+.header {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    background-color: var(--navy);
 }
 
+/* Homepage: fills the first screen. `svh` is the small viewport height, so
+   the mobile browser chrome does not push the scroll cue off-screen. */
+.header--home {
+    min-height: 100vh;
+    min-height: 100svh;
+}
+
+/* Subpages: a banner tall enough to read the title, short enough that the
+   content shows on the first screen. */
+.header--page {
+    min-height: 62vh;
+    min-height: 62svh;
+}
+
+/* Contact: no photo, just the title band. */
+.header--band {
+    min-height: 0;
+}
+
+.header__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    animation: fade-in 1.2s var(--ease-out) both;
+}
+
+/* Darkens the photo so white text stays readable, heavier at the top where
+   the navbar and title sit. */
 .header::before {
     content: "";
-    display: block;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+    inset: 0;
+    z-index: -1;
     background: linear-gradient(
         180deg,
-        rgba(20, 39, 74, 0.55) 0%,
-        rgba(20, 39, 74, 0.32) 45%,
-        rgba(20, 39, 74, 0.55) 100%
+        rgba(20, 39, 74, 0.62) 0%,
+        rgba(20, 39, 74, 0.38) 45%,
+        rgba(20, 39, 74, 0.58) 100%
     );
-    z-index: 0;
-    animation: fade-in 1.2s var(--ease-out) both;
+}
+
+.header--band::before {
+    display: none;
+}
+
+@media screen and (max-width: 991px) {
+    .header--page {
+        min-height: max(420px, 56svh);
+    }
+
+    .header--band {
+        min-height: 0;
+    }
+
+    /* Phone photos are portrait; keep the subject in view when the
+       landscape hero is cropped to a tall box. */
+    .header::before {
+        background: linear-gradient(
+            180deg,
+            rgba(20, 39, 74, 0.7) 0%,
+            rgba(20, 39, 74, 0.42) 50%,
+            rgba(20, 39, 74, 0.62) 100%
+        );
+    }
 }

@@ -1,4 +1,5 @@
 import "./Facility.css";
+import { imageAttrs } from "../../misc/images";
 
 interface FacilityProps {
     title: string;
@@ -6,10 +7,16 @@ interface FacilityProps {
 }
 
 function Facility(props: FacilityProps) {
+    const img = imageAttrs(props.image);
+
     return <>
         <div className="facility">
             <img
-                src={`/images/${props.image}`}
+                src={img.src}
+                srcSet={img.srcSet}
+                sizes="(max-width: 991px) calc(100vw - 40px), 700px"
+                width={img.width}
+                height={img.height}
                 alt={`${props.title} — Pensiunea LaDespani, Brașov`}
                 loading="lazy"
                 decoding="async"

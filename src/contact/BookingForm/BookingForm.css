@@ -7,30 +7,45 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
 
     margin-top: 3rem;
 }
 
+.booking-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.booking-form__field {
+    min-width: 0;
+}
+
 .booking-form__label {
     font-weight: 600;
-    color: #14274A;
-    margin-bottom: 5px;
+    color: var(--navy);
+    margin-bottom: 6px;
     display: block;
     font-size: 0.9rem;
 }
 
+/* 16px is the floor: below that iOS Safari zooms the page on focus and
+   leaves it zoomed. */
 .booking-form__input,
 .booking-form__textarea {
     width: 100%;
+    min-height: var(--tap);
     padding: 11px 12px;
     border-radius: var(--radius-sm);
     border: 1px solid #dfe3ea;
     background-color: #fbfcfe;
-    font-size: 14px;
+    font-size: 16px;
     font-family: inherit;
-    color: #14274A;
+    color: var(--navy);
     box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
 
     transition:
         border-color 0.25s ease,
@@ -38,9 +53,16 @@
         background-color 0.25s ease;
 }
 
+/* iOS renders empty date inputs collapsed; force them to a normal box. */
+.booking-form__input[type="date"] {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
 .booking-form__textarea {
     resize: vertical;
-    height: 80px;
+    min-height: 96px;
 }
 
 .booking-form__input:hover,
@@ -50,10 +72,28 @@
 
 .booking-form__input:focus,
 .booking-form__textarea:focus {
-    border-color: #14274A;
+    border-color: var(--navy);
     background-color: #FFF;
     box-shadow: 0 0 0 3px rgba(20, 39, 74, 0.12);
     outline: none;
+}
+
+.booking-form__consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--navy);
+}
+
+.booking-form__checkbox {
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    margin: 1px 0 0;
+    accent-color: var(--navy);
+    cursor: pointer;
 }
 
 .booking-form__button {
@@ -62,13 +102,14 @@
     justify-content: center;
     gap: 0.6rem;
 
-    background-color: #14274A;
+    min-height: 52px;
+    background-color: var(--navy);
     color: #fff;
     padding: 13px;
     border: none;
     border-radius: var(--radius-sm);
     cursor: pointer;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.05rem;
 
@@ -80,7 +121,7 @@
 }
 
 .booking-form__button:hover:not(:disabled) {
-    background-color: #0f1d38;
+    background-color: var(--navy-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -112,8 +153,8 @@
 
 .booking-form__error {
     color: #c0392b;
-    font-size: 12px;
-    margin: 4px 0 0;
+    font-size: 0.85rem;
+    margin: 6px 0 0;
 
     animation: rise-in 0.3s var(--ease-out) both;
 }
@@ -124,7 +165,8 @@
     color: #c0392b;
     border-radius: var(--radius-sm);
     padding: 12px 14px;
-    font-size: 13.5px;
+    font-size: 0.9rem;
+    line-height: 1.5;
 
     animation: shake 0.45s var(--ease-out) both;
 }
@@ -153,10 +195,15 @@
     }
 }
 
-.booking-form__terms .terms {
-    text-decoration: underline;
-    color: #14274A;
+.booking-form__terms {
     cursor: pointer;
+}
+
+/* The reCAPTCHA iframe is a fixed 304px wide; on narrow phones it must not
+   overflow the card. */
+.captcha-container {
+    max-width: 100%;
+    overflow: hidden;
 }
 
 /* Success confirmation panel shown in place of the form after submission. */
@@ -192,7 +239,7 @@
 }
 
 .booking-confirmation__check {
-    stroke: #14274A;
+    stroke: var(--navy);
     stroke-width: 3.5;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -209,7 +256,7 @@
 }
 
 .booking-confirmation__title {
-    color: #14274A;
+    color: var(--navy);
     font-size: 1.5rem;
     font-weight: 700;
     margin: 1.4rem 0 0.4rem;
@@ -225,13 +272,14 @@
 
 .booking-confirmation__button {
     margin-top: 1.6rem;
+    min-height: var(--tap);
     padding: 12px 28px;
 
-    background-color: #14274A;
+    background-color: var(--navy);
     color: #FFF;
     border: 0;
     border-radius: var(--radius-sm);
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
 
     cursor: pointer;
@@ -243,7 +291,7 @@
 }
 
 .booking-confirmation__button:hover {
-    background-color: #0f1d38;
+    background-color: var(--navy-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -257,9 +305,34 @@
     font: inherit;
     color: inherit;
     text-decoration: underline;
+    text-underline-offset: 0.15em;
     cursor: pointer;
 }
 
 .booking-form .terms.as-link:hover {
     opacity: 0.75;
+}
+
+@media screen and (max-width: 991px) {
+    .booking-form {
+        margin-top: 2rem;
+        padding: 20px 16px 24px;
+        gap: 14px;
+    }
+
+    .booking-form__row {
+        gap: 12px;
+    }
+
+    .booking-confirmation {
+        margin-top: 2rem;
+        padding: 36px 20px;
+    }
+}
+
+/* On the narrowest phones two date pickers no longer fit side by side. */
+@media screen and (max-width: 360px) {
+    .booking-form__row {
+        grid-template-columns: 1fr;
+    }
 }

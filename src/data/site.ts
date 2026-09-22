@@ -4,10 +4,14 @@
  * keyed by the same `key` field.
  */
 
+import type { PageKey } from '../i18n/config';
+
 export const BUSINESS = {
   name: 'LaDespani Guesthouse',
   alternateName: 'Pensiunea LaDespani',
   telephone: '+40721373747',
+  /** Human-readable form of the telephone number, grouped for reading aloud. */
+  telephoneDisplay: '+40 721 373 747',
   email: 'anudani241@hotmail.com',
   foundingDate: '2007',
   priceRange: '200-250 RON',
@@ -23,6 +27,19 @@ export const BUSINESS = {
   instagram: 'https://www.instagram.com/ladespaniguesthouse/',
   languages: ['ro', 'en', 'de', 'it', 'es', 'fr', 'et', 'ru', 'fi'],
 } as const;
+
+/**
+ * Hero photo per page, relative to /images. Pages without an entry (contact,
+ * card) get a plain navy band. The prerenderer preloads this image for each
+ * route because it is the largest thing on the first screen.
+ */
+export const HERO_IMAGES: Partial<Record<PageKey, string>> = {
+  home: 'landing1.webp',
+  rooms: 'rooms.webp',
+  facilities: 'facilities.webp',
+  gallery: 'gallery.webp',
+  about: 'about.webp',
+};
 
 export interface RoomData {
   key: string;

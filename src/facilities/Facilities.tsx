@@ -1,7 +1,6 @@
 import Testimonials from "../landing/Testimonials/Testimonials";
 import Footer from "../misc/Footer/Footer";
 import Header from "../misc/Header/Header";
-import "./Facilities.css";
 import Facility from "./Facility/Facility";
 import { Seo } from "../misc/Seo";
 import Reveal from "../misc/Reveal";
@@ -13,11 +12,10 @@ function Facilities() {
 
     return <>
         <Seo page="facilities" lang={lang} />
-        <Header image="facilities.webp" />
+        <Header title={c.facilities.h1} />
         <section className="facilities">
             <Reveal>
-                <div className="text">
-                    <h1 className="title">{c.facilities.h1}</h1>
+                <div className="page-intro">
                     <p className="subtitle">{c.facilities.intro}</p>
                 </div>
             </Reveal>

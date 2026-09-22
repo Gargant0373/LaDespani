@@ -59,7 +59,7 @@
 }
 
 .footer .content .column .text {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: #FFF;
 }
 
@@ -68,7 +68,7 @@
 
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.5rem;
 
     cursor: pointer;
 
@@ -87,8 +87,48 @@
 }
 
 @media screen and (max-width: 991px) {
+    .footer {
+        padding: 20px var(--gutter) 28px;
+        margin-top: 3.5rem;
+    }
+
     .footer .content {
+        width: 100%;
+        max-width: 24rem;
         flex-direction: column;
-        gap: 2rem;
+        align-items: center;
+        gap: 1.75rem;
+        padding-top: 28px;
+    }
+
+    .footer .content .column {
+        width: 100%;
+        align-items: center;
+        gap: 0;
+    }
+
+    .footer .content .column .text {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .footer .content .column .pad {
+        padding-top: 0.8rem;
+    }
+
+    /* Each link is a full-width row with a comfortable hit area. */
+    .footer .content .column .text2,
+    .footer .content .column .text2.as-link {
+        width: 100%;
+        justify-content: center;
+        min-height: var(--tap);
+        padding: 0 0.5rem;
+        box-sizing: border-box;
+        font-size: 1.05rem;
+        text-align: center;
+    }
+
+    .footer .content .column .text2:hover {
+        transform: none;
     }
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Footer.css";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaPhone, FaEnvelope } from "react-icons/fa";
 import TermsModal from "../../contact/TermsModal/TermsModal";
 import { useI18n } from "../../i18n/LanguageContext";
 import { BUSINESS } from "../../data/site";
@@ -24,13 +24,15 @@ function Footer() {
                     <div className="text">{c.footer.address2}</div>
                 </div>
                 <div className="column">
+                    <a className="text2" href={`tel:${BUSINESS.telephone}`}><FaPhone aria-hidden="true" /> {BUSINESS.telephoneDisplay}</a>
+                    <a className="text2" href={`mailto:${BUSINESS.email}`}><FaEnvelope aria-hidden="true" /> {BUSINESS.email}</a>
                     <a className="text2" href={BUSINESS.mapUrl} target="_blank" rel="noopener">{c.footer.findUs}</a>
                     <a className="text2" href={path("contact")}>{c.footer.contact}</a>
                     <button className="text2 as-link" type="button" onClick={openTermsModal}>{c.footer.terms}</button>
                 </div>
                 <div className="column">
-                    <a className="text2" href={BUSINESS.facebook} target="_blank" rel="noopener"><FaFacebookF /> Facebook</a>
-                    <a className="text2" href={BUSINESS.instagram} target="_blank" rel="noopener"><FaInstagram /> Instagram</a>
+                    <a className="text2" href={BUSINESS.facebook} target="_blank" rel="noopener"><FaFacebookF aria-hidden="true" /> Facebook</a>
+                    <a className="text2" href={BUSINESS.instagram} target="_blank" rel="noopener"><FaInstagram aria-hidden="true" /> Instagram</a>
                 </div>
             </div>
         </footer>

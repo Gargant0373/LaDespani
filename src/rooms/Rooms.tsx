@@ -1,7 +1,6 @@
 import Footer from "../misc/Footer/Footer";
 import Header from "../misc/Header/Header";
 import Room from "./Room/Room";
-import "./Rooms.css";
 import { Seo } from "../misc/Seo";
 import Reveal from "../misc/Reveal";
 import { useI18n } from "../i18n/LanguageContext";
@@ -12,11 +11,10 @@ function Rooms() {
 
     return <>
         <Seo page="rooms" lang={lang} />
-        <Header image="rooms.webp" />
+        <Header title={c.rooms.h1} />
         <section className="rooms">
             <Reveal>
-                <div className="text">
-                    <h1 className="title">{c.rooms.h1}</h1>
+                <div className="page-intro">
                     <p className="subtitle">{c.rooms.intro}</p>
                 </div>
             </Reveal>

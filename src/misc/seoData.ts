@@ -16,7 +16,8 @@ import {
   PageKey,
   urlFor,
 } from '../i18n/config';
-import { BUSINESS, FACILITIES, GALLERY_IMAGE_COUNT, ROOMS } from '../data/site';
+import { BUSINESS, FACILITIES, GALLERY_IMAGE_COUNT, HERO_IMAGES, ROOMS } from '../data/site';
+import { imageAttrs } from './images';
 
 export interface Alternate {
   hreflang: string;
@@ -35,6 +36,8 @@ export interface PageMeta {
   robots: string;
   alternates: Alternate[];
   schema: Record<string, unknown>[];
+  /** Hero photo to preload, when the page has one; it is the LCP element. */
+  heroPreload?: { href: string; srcSet?: string; sizes: string };
 }
 
 /**
@@ -227,5 +230,13 @@ export function buildMeta(page: PageKey, lang: Lang): PageMeta {
     robots: indexable ? 'index,follow,max-image-preview:large' : 'noindex,follow',
     alternates: alternatesFor(page),
     schema,
+    heroPreload: heroPreloadFor(page),
   };
+}
+
+function heroPreloadFor(page: PageKey): PageMeta['heroPreload'] {
+  const image = HERO_IMAGES[page];
+  if (!image) return undefined;
+  const attrs = imageAttrs(image);
+  return { href: attrs.src, srcSet: attrs.srcSet, sizes: '100vw' };
 }

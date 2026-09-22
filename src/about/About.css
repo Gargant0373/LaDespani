@@ -16,34 +16,14 @@
     align-items: center;
 }
 
-.about .title {
-    padding-top: 2rem;
-
-    font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: 0.15rem;
-    text-align: center;
-    color: #14274A;
-}
-
-.about .title::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 3px;
-    border-radius: 3px;
-    background-color: var(--gold);
-    margin: 1rem auto 0;
-}
-
 .about .subtitle {
-    margin-top: 1rem;
+    margin-top: 3rem;
 
     font-size: 1.2rem;
     font-weight: 400;
     line-height: 1.8;
     text-align: center;
-    color: #14274A;
+    color: var(--navy);
 
     max-width: 850px;
 }
@@ -51,12 +31,26 @@
 .about img {
     margin-top: 2rem;
     width: 80%;
+    height: auto;
 
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
 }
 
 @media screen and (max-width: 991px) {
+    .about {
+        width: auto;
+        margin: 0 var(--gutter);
+    }
+
+    /* A long paragraph reads far better ragged-right than centred. */
+    .about .subtitle {
+        margin-top: 2rem;
+        font-size: 1.05rem;
+        line-height: 1.75;
+        text-align: left;
+    }
+
     .about img {
         width: 100%;
         border-radius: var(--radius-md);

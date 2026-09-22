@@ -56,6 +56,18 @@ function renderHead(meta) {
     lines.push(`<script type="application/ld+json">${escapeJsonLd(block)}</script>`);
   }
 
+  // The hero photo is the largest thing on the first screen of every page
+  // that has one; start fetching it before the JS bundle has even parsed.
+  // imagesrcset/imagesizes let the browser pick the same variant the <img>
+  // will use, so a phone preloads the 480px file, not the 2048px one.
+  if (meta.heroPreload) {
+    const { href, srcSet, sizes } = meta.heroPreload;
+    const responsive = srcSet
+      ? ` imagesrcset="${escapeHtml(srcSet)}" imagesizes="${escapeHtml(sizes)}"`
+      : '';
+    lines.push(`<link rel="preload" as="image" href="${escapeHtml(href)}"${responsive} fetchpriority="high" />`);
+  }
+
   // Content is revealed on scroll by an IntersectionObserver. Without
   // JavaScript that never fires, so make it visible instead of invisible.
   lines.push(

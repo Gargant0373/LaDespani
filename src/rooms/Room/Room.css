@@ -36,7 +36,7 @@
 .room .content .name {
     margin: 0;
 
-    color: #14274A;
+    color: var(--navy);
     font-size: 1.45rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -80,7 +80,7 @@
     border: 1px solid rgba(20, 39, 74, 0.14);
     border-radius: 999px;
 
-    color: #14274A;
+    color: var(--navy);
     font-size: 0.78rem;
     font-weight: 500;
 
@@ -111,7 +111,7 @@
 }
 
 .room .content .price {
-    color: #14274A;
+    color: var(--navy);
     font-size: 1.35rem;
     font-weight: 700;
     white-space: nowrap;
@@ -126,6 +126,12 @@
 .room .content .book-room {
     border: 0;
     background-color: var(--gold);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--tap);
+    box-sizing: border-box;
 
     color: #FFF;
     font-weight: 600;
@@ -144,7 +150,7 @@
 }
 
 .room .content .book-room:hover {
-    background-color: #d4ab61;
+    background-color: var(--gold-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -155,33 +161,56 @@
 
 @media screen and (max-width: 991px) {
     .room {
+        width: auto;
+        margin: 2rem var(--gutter) 0;
         grid-template-columns: 1fr;
         border-radius: var(--radius-md);
     }
 
+    .room:hover {
+        transform: none;
+    }
+
+    /* 4:3 photo box; the slider fills it. */
     .room .media {
         min-height: 0;
-        height: 250px;
+        aspect-ratio: 4 / 3;
     }
 
     .room .content {
-        padding: 1.5rem 1.3rem 1.4rem;
+        padding: 1.4rem 1.25rem 1.25rem;
     }
 
     .room .content .name {
-        font-size: 1.15rem;
+        font-size: 1.2rem;
+        letter-spacing: 0.08rem;
     }
 
     .room .content .description {
+        margin: 0.9rem 0 1.1rem;
+        font-size: 0.95rem;
+    }
+
+    .room .content .amenities {
+        margin-bottom: 1.2rem;
+    }
+
+    .room .content .amenity {
         font-size: 0.85rem;
+        padding: 0.45rem 0.85rem;
+    }
+
+    .room .content .booking {
+        padding-top: 1.1rem;
     }
 
     .room .content .price {
-        font-size: 1.15rem;
+        font-size: 1.25rem;
     }
 
     .room .content .book-room {
-        padding: 0.65rem 1.2rem;
-        font-size: 0.75rem;
+        flex: 0 0 auto;
+        padding: 0.7rem 1.4rem;
+        font-size: 0.85rem;
     }
 }

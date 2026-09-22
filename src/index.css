@@ -17,10 +17,18 @@
 
     --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Minimum size of anything a finger has to hit. */
+    --tap: 48px;
+
+    /* Side gutter for full-width sections on phones. */
+    --gutter: 20px;
 }
 
 html {
     scroll-behavior: smooth;
+    /* Keep iOS from inflating text when rotating to landscape. */
+    -webkit-text-size-adjust: 100%;
 }
 
 html, body {
@@ -36,6 +44,11 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+    /* Nothing should ever cause sideways scrolling on a phone. */
+    overflow-x: hidden;
+}
+
 ::selection {
     background-color: var(--gold);
     color: var(--navy);
@@ -49,6 +62,10 @@ html, body {
 
 button {
     font-family: inherit;
+}
+
+img {
+    max-width: 100%;
 }
 
 /* Scroll-reveal utility — elements start hidden and rise into view
@@ -124,17 +141,13 @@ button {
 .landing-card .title,
 .landing-card .text,
 .testimonials .title,
-.rooms .text .title,
-.rooms .text .subtitle,
 .facility .title,
-.about .title,
 .about .subtitle,
 .contact .main .title,
 .contact .main .text,
 .room .name,
 .room .description,
-.gallery-intro .title,
-.gallery-intro .subtitle {
+.page-intro .subtitle {
     margin: 0;
     font-size: inherit;
     font-weight: inherit;
@@ -146,14 +159,12 @@ button {
 .landing-card .left .explore,
 .header .book,
 .room .content .book-room,
-.header .navbar .logo,
-.contact-heading .container .logo {
+.header .navbar .logo {
     display: inline-block;
     text-decoration: none;
 }
 
-.header .navbar .logo,
-.contact-heading .container .logo {
+.header .navbar .logo {
     display: block;
     color: inherit;
 }
@@ -183,37 +194,20 @@ button {
     color: var(--ink-muted, #5b5b5b);
 }
 
-/* Gallery heading block. */
-.gallery-intro {
+/* Intro paragraph under a subpage banner (rooms, facilities, gallery). The
+   page's h1 lives in the banner, so this is only the lead text. */
+.page-intro {
     width: 80%;
-    margin: 3rem auto 2rem;
+    max-width: 760px;
+    margin: 3rem auto 0;
     text-align: center;
-    color: #14274A;
+    color: var(--navy);
 }
 
-.gallery-intro .title {
-    font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: 0.15rem;
-    margin-bottom: 1rem;
-}
-
-.gallery-intro .title::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 3px;
-    border-radius: 3px;
-    background-color: var(--gold);
-    margin: 0.75rem auto 0;
-}
-
-.gallery-intro .subtitle {
+.page-intro .subtitle {
     font-weight: 500;
     line-height: 1.7;
     color: var(--ink-muted, #5b5b5b);
-    max-width: 760px;
-    margin: 0 auto;
 }
 
 /* Available to screen readers, invisible on screen. */
@@ -228,4 +222,25 @@ button {
     clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
+}
+
+@media screen and (max-width: 991px) {
+    .intro {
+        padding: 0 var(--gutter);
+        font-size: 1rem;
+        line-height: 1.75;
+        text-align: left;
+    }
+
+    .page-intro {
+        width: auto;
+        margin: 2rem var(--gutter) 0;
+        text-align: left;
+    }
+
+    .page-intro .subtitle {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.75;
+    }
 }

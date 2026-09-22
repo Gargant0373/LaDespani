@@ -126,6 +126,9 @@
 
     .digital-card .navbar a {
         font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+        min-height: var(--tap);
     }
 
     .digital-card .navbar .logo {
@@ -156,5 +159,7 @@
     
     .digital-card .main-matter .text .info {
         font-size: 1rem;
+        display: block;
+        padding: 0.35rem 0;
     }
 }

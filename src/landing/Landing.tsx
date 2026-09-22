@@ -12,7 +12,7 @@ function Landing() {
 
     return <>
         <Seo page="home" lang={lang} />
-        <Header image="landing1.webp" />
+        <Header />
         <Reveal>
             <h1 className="motto">{c.home.h1}</h1>
         </Reveal>

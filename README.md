@@ -64,6 +64,25 @@ published. `npm run convert-images` turns them into the WebP files under
 `og-image.jpg` social card. Keeping the originals out of `public/` cut the
 deployed output from ~190 MB to ~26 MB.
 
+Each image is written at full size plus 480, 960 and 1440px variants
+(`name-w960.webp`), and the script records every image's size and available
+widths in `src/data/images.generated.json`. `imageAttrs()` in
+`src/misc/images.ts` turns that manifest into `src`/`srcSet`/`width`/`height`
+so a phone downloads a 480px file instead of a 2048px one and nothing shifts
+while it loads. Re-run the script and commit the manifest whenever an image
+is added or replaced.
+
+### Mobile layout
+
+Every page shares the same `Header`: a fixed navbar that gains a solid
+background once scrolled (so the menu, booking and call actions never need a
+scroll back up), and a hero that is full-screen on the homepage and a shorter
+banner carrying the page's `<h1>` on subpages. Phone-specific rules live in
+`@media (max-width: 991px)` blocks at the bottom of each component
+stylesheet; the desktop layout is the default. Tap targets are 48px
+(`--tap`), form inputs are 16px so iOS does not zoom on focus, and the
+gallery lightbox and room sliders respond to touch.
+
 ### Host configuration
 
 `public/_redirects` and `public/_headers` are Cloudflare Pages config. The

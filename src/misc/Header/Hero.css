@@ -1,22 +1,28 @@
+/* Hero copy: fills the header below the fixed navbar and centres vertically.
+   The top padding clears the navbar's logo tile. */
+
 .header .hero {
     color: #FFF;
 
+    flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     width: 80%;
-
-    margin-top: 7rem;
-
     margin-left: auto;
     margin-right: auto;
+    padding-top: 9.5rem;
+    padding-bottom: 3rem;
+    box-sizing: border-box;
 }
 
-.header .hero .item {
-    z-index: 1;
-
+.header .hero .item,
+.header .hero .eyebrow,
+.header .hero .page-title {
     font-family: "Roboto", sans-serif;
     letter-spacing: 0.3rem;
+    text-shadow: 0 2px 18px rgba(20, 39, 74, 0.45);
 
     animation: hero-rise 0.9s var(--ease-out) both;
 }
@@ -39,11 +45,38 @@
 }
 
 .header .hero .item:nth-child(4) {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     letter-spacing: 0.1rem;
 
     margin-top: 0.8rem;
     animation-delay: 0.65s;
+}
+
+/* Subpage banner: brand line, then the page's h1. */
+.header .hero .eyebrow {
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.25rem;
+    text-transform: uppercase;
+    color: var(--gold);
+    animation-delay: 0.15s;
+}
+
+.header .hero .page-title {
+    margin: 0.6rem 0 0;
+    font-size: clamp(2.2rem, 4vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: 0.05rem;
+    animation-delay: 0.3s;
+}
+
+/* The contact band has no photo and no button below the title. The extra top
+   padding clears the full-height logo tile, which the band never scrolls
+   away from. */
+.header--band .hero {
+    padding-top: 11.5rem;
+    padding-bottom: 3.5rem;
 }
 
 @keyframes hero-rise {
@@ -60,22 +93,46 @@
 
 @media screen and (max-width: 991px) {
     .header .hero {
-        margin-top: 5rem;
+        width: 100%;
+        padding: 6rem 24px 2.5rem;
+        text-align: center;
+        align-items: center;
     }
 
     .header .hero .item:nth-child(1) {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
+        letter-spacing: 0.25rem;
     }
 
     .header .hero .item:nth-child(2) {
-        font-size: 3rem;
+        font-size: clamp(2.8rem, 12vw, 3.4rem);
+        letter-spacing: 0.2rem;
     }
 
     .header .hero .item:nth-child(3) {
-        font-size: 2rem;
+        font-size: 1.6rem;
+        letter-spacing: 0.35rem;
     }
 
     .header .hero .item:nth-child(4) {
-        font-size: 0.7rem;
+        font-size: 1rem;
+        letter-spacing: 0.04rem;
+        line-height: 1.5;
+        margin-top: 1rem;
+    }
+
+    .header .hero .eyebrow {
+        font-size: 0.78rem;
+        letter-spacing: 0.22rem;
+    }
+
+    .header .hero .page-title {
+        font-size: clamp(1.9rem, 8vw, 2.5rem);
+        letter-spacing: 0;
+    }
+
+    .header--band .hero {
+        padding-top: 6.5rem;
+        padding-bottom: 2.25rem;
     }
 }
