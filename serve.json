@@ -1,0 +1,39 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/home", "destination": "/", "type": 301 },
+    { "source": "/index", "destination": "/", "type": 301 },
+    { "source": "/rooms", "destination": "/en/rooms", "type": 301 },
+    { "source": "/facility", "destination": "/en/facilities", "type": 301 },
+    { "source": "/facilities", "destination": "/en/facilities", "type": 301 },
+    { "source": "/about", "destination": "/en/about", "type": 301 },
+    { "source": "/gallery", "destination": "/en/gallery", "type": 301 }
+  ],
+  "headers": [
+    {
+      "source": "**",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" }
+      ]
+    },
+    {
+      "source": "assets/**",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "images/**",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }]
+    },
+    {
+      "source": "{favicon.*,apple-touch-icon.png,icon-*.png,site.webmanifest}",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+    },
+    {
+      "source": "{sitemap.xml,robots.txt}",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+    }
+  ]
+}

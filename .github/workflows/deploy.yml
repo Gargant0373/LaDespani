@@ -1,0 +1,48 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+# One deploy at a time. A newer push waits instead of cancelling, so a
+# container swap is never interrupted halfway.
+concurrency:
+  group: production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: production
+      url: https://www.ladespani.ro
+    steps:
+      # The host stays in a secret because the repo is public and the origin
+      # IP is otherwise hidden behind Cloudflare.
+      - name: Build and restart on the VPS
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          HOST: ${{ secrets.DEPLOY_HOST }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          # The server pins this key to deploy/deploy.sh, so no command is sent.
+          ssh -T -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes "root@$HOST"
+
+      # Through Cloudflare, as Googlebot sees it. A page from the sitemap must
+      # carry its own canonical: when the server fell back to the homepage for
+      # every URL, the site still returned 200 everywhere and nothing failed.
+      - name: Check the live site
+        run: |
+          site=https://www.ladespani.ro
+          url=$(curl -fsS "$site/sitemap.xml" | grep -o '<loc>[^<]*' | sed -n 2p | cut -c6-)
+          curl -fsS "$url" | grep -qF "rel=\"canonical\" href=\"$url\"" \
+            || { echo "::error::$url is not serving its own prerendered page"; exit 1; }
+          code=$(curl -s -o /dev/null -w '%{http_code}' "$site/__deploy-check__")
+          [ "$code" = 404 ] || { echo "::error::unknown URLs return $code instead of 404"; exit 1; }
+          echo "ok: $url serves its own page, unknown URLs 404"

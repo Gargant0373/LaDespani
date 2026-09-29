@@ -1,0 +1,9 @@
+# A host-built node_modules (e.g. sharp's native binary) must not leak into the
+# Alpine image. .env is deliberately NOT ignored: Vite bakes its VITE_* keys
+# into the bundle at build time.
+node_modules
+dist
+dist-ssr
+.git
+# Full-resolution image originals; the build only uses public/images.
+assets-src
