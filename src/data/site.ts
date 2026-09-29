@@ -25,6 +25,11 @@ export const BUSINESS = {
   mapUrl: 'https://maps.app.goo.gl/xDLBLkZsb61cQ6eh8',
   facebook: 'https://www.facebook.com/ladespani.guesthouse/',
   instagram: 'https://www.instagram.com/ladespaniguesthouse/',
+  // Listings, used only as structured-data `sameAs` so Google ties them to this
+  // site. Not linked in the footer: that would steer direct bookings to Booking.
+  booking: 'https://www.booking.com/hotel/ro/ladespani.html',
+  tripadvisor:
+    'https://www.tripadvisor.com/Hotel_Review-g295394-d1539280-Reviews-Guesthouse_La_Despani-Brasov_Brasov_County_Central_Romania_Transylvania.html',
   languages: ['ro', 'en', 'de', 'it', 'es', 'fr', 'et', 'ru', 'fi'],
 } as const;
 

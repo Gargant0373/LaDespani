@@ -101,7 +101,7 @@ function lodgingBusiness(lang: Lang): Record<string, unknown> {
       value: true,
     })),
     knowsLanguage: [...BUSINESS.languages],
-    sameAs: [BUSINESS.facebook, BUSINESS.instagram],
+    sameAs: [BUSINESS.facebook, BUSINESS.instagram, BUSINESS.booking, BUSINESS.tripadvisor],
   };
 }
 
