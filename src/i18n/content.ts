@@ -120,12 +120,12 @@ const ro: Copy = {
     home: {
       title: 'Cazare Brașov | Pensiunea LaDespani – parcare interioară',
       description:
-        'Cazare în Brașov la Pensiunea LaDespani: camere cu baie proprie de la 200 lei/noapte, parcare interioară securizată, grădină, bucătărie și spălătorie. Vă primim din 2007.',
+        'Cazare în Brașov la Pensiunea LaDespani: camere cu baie proprie de la 220 lei/noapte, parcare interioară securizată, grădină, bucătărie și spălătorie. Vă primim din 2007.',
     },
     rooms: {
       title: 'Camere de cazare în Brașov | Pensiunea LaDespani',
       description:
-        'Camere de cazare în Brașov: budget, standard și cu balcon, toate cu baie proprie, TV și seif. Prețuri de la 200 lei pe noapte, parcare interioară inclusă.',
+        'Camere de cazare în Brașov: budget, standard și cu balcon, toate cu baie proprie, TV și seif. Prețuri de la 220 lei pe noapte, parcare interioară inclusă.',
     },
     facilities: {
       title: 'Facilități și parcare interioară | Pensiunea LaDespani Brașov',
@@ -352,12 +352,12 @@ const en: Copy = {
     home: {
       title: 'Guesthouse in Brasov, Romania | LaDespani – Indoor Parking',
       description:
-        'LaDespani is a family guesthouse in Brasov, Romania: rooms with private bathrooms from 200 RON a night, secure indoor parking for cars and motorcycles, garden and guest kitchen. Hosting since 2007.',
+        'LaDespani is a family guesthouse in Brasov, Romania: rooms with private bathrooms from 220 RON a night, secure indoor parking for cars and motorcycles, garden and guest kitchen. Hosting since 2007.',
     },
     rooms: {
       title: 'Rooms in Brasov | LaDespani Guesthouse',
       description:
-        'Guest rooms in Brasov: budget, standard and balcony options, all with private bathrooms, TV and safe. From 200 RON per night, secure indoor parking included.',
+        'Guest rooms in Brasov: budget, standard and balcony options, all with private bathrooms, TV and safe. From 220 RON per night, secure indoor parking included.',
     },
     facilities: {
       title: 'Facilities & Secure Indoor Parking | LaDespani Guesthouse Brasov',

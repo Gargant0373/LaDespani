@@ -14,7 +14,7 @@ export const BUSINESS = {
   telephoneDisplay: '+40 721 373 747',
   email: 'anudani241@hotmail.com',
   foundingDate: '2007',
-  priceRange: '200-250 RON',
+  priceRange: '220-250 RON',
   currency: 'RON',
   streetAddress: 'Mihai Viteazul 128',
   addressLocality: 'Brasov',
@@ -57,7 +57,7 @@ export const ROOMS: RoomData[] = [
   {
     key: 'budget',
     images: ['room1_0.webp', 'room1_1.webp', 'room1_2.webp'],
-    price: 200,
+    price: 220,
     facilities: {
       privateBathroom: true,
       bathtub: false,
