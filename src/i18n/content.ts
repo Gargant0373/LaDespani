@@ -84,22 +84,9 @@ export interface Copy {
   card: { visitWebsite: string; qrAlt: string };
 
   form: {
-    name: string; namePh: string;
-    checkin: string; checkout: string;
-    adults: string; adultsPh: string;
-    kids: string; kidsPh: string;
-    phone: string; phonePh: string;
-    email: string; emailPh: string;
-    description: string; descriptionPh: string;
-    errName: string; errCheckin: string; errCheckout: string; errAdults: string;
-    errKids: string; errPhone: string; errEmail: string; errTerms: string;
-    agreePrefix: string; termsLink: string;
-    captchaUnavailable: string; captchaRequired: string;
-    serviceUnavailable: string; sendError: string;
-    submit: string; sending: string;
-    successTitle: string; successText: string;
-    confirmationPrefix: string; confirmationSuffix: string;
-    sendAnother: string;
+    title: string;
+    text: string;
+    submit: string;
   };
 
   footer: {
@@ -305,33 +292,9 @@ const ro: Copy = {
   card: { visitWebsite: 'Vizitează site-ul', qrAlt: 'Cod QR către site-ul oficial' },
 
   form: {
-    name: 'Nume', namePh: 'Numele dumneavoastră',
-    checkin: 'Data sosirii', checkout: 'Data plecării',
-    adults: 'Număr de adulți', adultsPh: 'Câți adulți',
-    kids: 'Număr de copii', kidsPh: 'Câți copii',
-    phone: 'Telefon', phonePh: 'Numărul de telefon',
-    email: 'Email', emailPh: 'Adresa de email',
-    description: 'Mesaj', descriptionPh: 'Informații suplimentare',
-    errName: 'Numele este obligatoriu',
-    errCheckin: 'Data sosirii este obligatorie',
-    errCheckout: 'Data plecării este obligatorie',
-    errAdults: 'Este necesar cel puțin un adult',
-    errKids: 'Numărul de copii este obligatoriu',
-    errPhone: 'Introduceți un număr de telefon valid',
-    errEmail: 'Adresa de email este obligatorie',
-    errTerms: 'Trebuie să acceptați termenii și condițiile',
-    agreePrefix: 'Sunt de acord cu ',
-    termsLink: 'termenii și condițiile',
-    captchaUnavailable: 'Verificarea CAPTCHA nu este disponibilă. Puteți trimite cererea; o vom verifica manual.',
-    captchaRequired: 'Vă rugăm să completați verificarea CAPTCHA înainte de a trimite.',
-    serviceUnavailable: 'Serviciul de email nu este disponibil momentan. Vă rugăm încercați mai târziu.',
-    sendError: 'A apărut o problemă la trimiterea cererii. Încercați din nou sau sunați-ne direct.',
-    submit: 'Trimite cererea', sending: 'Se trimite...',
-    successTitle: 'Cererea de rezervare a fost trimisă!',
-    successText: 'Vă mulțumim că ați ales LaDespani. Am primit cererea dumneavoastră și vă răspundem cât putem de repede.',
-    confirmationPrefix: 'Un email de confirmare este pe drum către ',
-    confirmationSuffix: '.',
-    sendAnother: 'Trimite o altă cerere',
+    title: 'Cerere de rezervare',
+    text: 'Spuneți-ne datele și numărul de persoane, iar noi vă confirmăm disponibilitatea cât putem de repede.',
+    submit: 'Cere o rezervare',
   },
 
   footer: {
@@ -537,33 +500,9 @@ const en: Copy = {
   card: { visitWebsite: 'Visit website', qrAlt: 'QR code linking to the official website' },
 
   form: {
-    name: 'Name', namePh: 'Enter your name',
-    checkin: 'Check-in date', checkout: 'Check-out date',
-    adults: 'Number of adults', adultsPh: 'Enter number of adults',
-    kids: 'Number of kids', kidsPh: 'Enter number of kids',
-    phone: 'Phone number', phonePh: 'Enter your phone number',
-    email: 'Email', emailPh: 'Enter your email',
-    description: 'Message', descriptionPh: 'Additional information',
-    errName: 'Name is required',
-    errCheckin: 'Check-in date is required',
-    errCheckout: 'Check-out date is required',
-    errAdults: 'At least 1 adult is required',
-    errKids: 'Number of kids is required',
-    errPhone: 'A valid phone number is required',
-    errEmail: 'Email is required',
-    errTerms: 'You must agree to the terms and conditions',
-    agreePrefix: 'I agree to the ',
-    termsLink: 'terms and conditions',
-    captchaUnavailable: 'CAPTCHA is unavailable. You can still send your request; we will review it manually.',
-    captchaRequired: 'Please complete the CAPTCHA before submitting.',
-    serviceUnavailable: 'The email service is currently unavailable. Please try again later.',
-    sendError: 'There was a problem sending your request. Please try again, or call us directly.',
-    submit: 'Send request', sending: 'Sending...',
-    successTitle: 'Booking request sent!',
-    successText: 'Thank you for choosing LaDespani. We have received your request and will get back to you as soon as possible.',
-    confirmationPrefix: 'A confirmation email is on its way to ',
-    confirmationSuffix: '.',
-    sendAnother: 'Send another request',
+    title: 'Reservation request',
+    text: 'Tell us your dates and how many guests, and we will confirm availability as soon as we can.',
+    submit: 'Request a reservation',
   },
 
   footer: {

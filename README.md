@@ -118,9 +118,7 @@ unused for a week. nginx proxies `ladespani.ro` to `localhost:3000`.
 Already done on the current VPS; repeat it on a new one. As root, with `git`,
 `curl` and Docker installed:
 
-1. `git clone https://github.com/Gargant0373/LaDespani.git /root/LaDespani`,
-   then put the production `.env` in it. Deploys use `git reset --hard`,
-   which leaves untracked files such as `.env` alone.
+1. `git clone https://github.com/Gargant0373/LaDespani.git /root/LaDespani`.
 2. Add the deploy key's public half to `/root/.ssh/authorized_keys`, pinned to
    the deploy script:
 
@@ -137,6 +135,6 @@ Already done on the current VPS; repeat it on a new one. As root, with `git`,
 
 ## Environment
 
-Copy `.env.example` to `.env` and fill in the EmailJS and reCAPTCHA keys. The
-booking form degrades gracefully without them: it warns and allows manual
-review rather than breaking.
+No environment variables are needed. Reservation requests go through
+ajuns.ro: `index.html` loads its widget script, and the contact page's
+"Request a reservation" button (`data-ajuns-open`) opens the request form.
